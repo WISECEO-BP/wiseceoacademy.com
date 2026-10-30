@@ -7,10 +7,34 @@
 /* ===== Settings ===== */
 /* Paste the Airtable application form link here. While empty, Apply buttons say "opens soon". */
 const APPLY_URL = "";
-/* Paste the Airtable partner interest form link here. While empty, the partner button says "opens soon". */
+/* Paste the Airtable sponsor interest form link here. While empty, sponsor buttons say "opens soon". */
 const PARTNER_URL = "";
-/* Add partner names once they agree to be listed. Empty hides the row. */
-const PARTNERS = [];
+/* ===== Sponsors =====
+   List a sponsor only after they have agreed in writing to be named, at a tier they chose.
+   tier: "platinum" | "gold" | "silver" | "bronze"
+   logo: path to an approved logo file in assets/sponsors/ (for example "assets/sponsors/acme.svg"),
+         or "" to show the name as text until the logo arrives.
+   url: the sponsor's website, or "".
+   To publish one of the examples below, move it out of the comment and set its tier. */
+const SPONSORS = [
+  /* { name:"Google for Nonprofits", tier:"", logo:"", url:"https://www.google.com/nonprofits/" }, */
+  /* { name:"Candid", tier:"", logo:"", url:"https://candid.org/" }, */
+  /* { name:"TechOlympics, presented by Procter & Gamble", tier:"", logo:"", url:"https://techolympics.org/" }, */
+  /* { name:"Amazon Future Engineer", tier:"", logo:"", url:"https://www.amazonfutureengineer.com/" }, */
+];
+
+/* Sponsorship packages shown on the Sponsorship page. price: "" shows "Pricing on request".
+   DRAFT benefits: review and edit before sharing with sponsors. */
+const PACKAGES = [
+  { tier:"platinum", name:"Platinum", price:"", lead:"Name a full track cohort.",
+    perks:["Named sponsor of one track cohort","Largest logo on the Sponsors and Home pages","Host up to three live sessions","First look at fellows finishing Level 2 for internships","Outcome report every cohort","Recognition at orientation"] },
+  { tier:"gold", name:"Gold", price:"", lead:"Fund credential exams for a cohort.",
+    perks:["Exam vouchers named for your company","Large logo on the Sponsors page","Host up to two live sessions","Outcome report every cohort","Recognition at orientation"] },
+  { tier:"silver", name:"Silver", price:"", lead:"Equip a group of fellows.",
+    perks:["Devices or vouchers for a group of fellows","Logo on the Sponsors page","Host one live session","Outcome report every cohort"] },
+  { tier:"bronze", name:"Bronze", price:"", lead:"Back one fellow’s credential.",
+    perks:["One fellow’s credential exam","Logo on the Sponsors page","Outcome report summary"] }
+];
 
 /* ===== Content ===== */
 const TRACKS = [
@@ -90,7 +114,7 @@ function owl(label){
 }
 
 /* ===== Header and footer (one menu for every page) ===== */
-const MENU = [["tracks","tracks.html","Tracks"],["agenda","agenda.html","Agenda"],["speakers","speakers.html","Speakers"],["partners","partners.html","Partners"],["faq","faq.html","FAQ"]];
+const MENU = [["tracks","tracks.html","Tracks"],["agenda","agenda.html","Agenda"],["speakers","speakers.html","Speakers"],["sponsors","sponsors.html","Sponsors"],["faq","faq.html","FAQ"]];
 const headerEl = $("siteHeader");
 if (headerEl) headerEl.innerHTML = `<div class="wrap">
   <a class="mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span><b>WISECEO</b><small>ACADEMY</small></span></a>
@@ -209,15 +233,36 @@ document.querySelectorAll("[data-apply]").forEach(a => {
   else { a.removeAttribute("href"); a.setAttribute("aria-disabled","true"); a.textContent = "Application opens soon"; }
 });
 document.querySelectorAll("[data-apply-note]").forEach(el => { el.hidden = !!APPLY_URL; });
-const partnerBtn = $("partnerBtn");
-if (partnerBtn){
-  if (PARTNER_URL){ partnerBtn.href = PARTNER_URL; }
-  else { partnerBtn.removeAttribute("href"); partnerBtn.setAttribute("aria-disabled","true"); partnerBtn.textContent = "Partner form opens soon"; }
+document.querySelectorAll("[data-sponsor-form]").forEach(a => {
+  if (PARTNER_URL){ a.href = PARTNER_URL; a.target = "_blank"; a.rel = "noopener"; }
+  else { a.removeAttribute("href"); a.setAttribute("aria-disabled","true"); a.textContent = "Sponsor form opens soon"; }
+});
+/* Sponsor tiers and packages */
+const TIERS = [["platinum","Platinum"],["gold","Gold"],["silver","Silver"],["bronze","Bronze"]];
+const listed = SPONSORS.filter(sp => TIERS.some(([t]) => t === sp.tier));
+const logoCard = sp => {
+  const inner = sp.logo ? `<img src="${esc(sp.logo)}" alt="${esc(sp.name)}">` : `<span class="wordmark">${esc(sp.name)}</span>`;
+  return sp.url ? `<a class="logo-card" href="${esc(sp.url)}" target="_blank" rel="noopener">${inner}</a>` : `<div class="logo-card">${inner}</div>`;
+};
+const openCard = name => `<a class="logo-card open" href="sponsorship.html"><span>Your logo here</span><small>Become a ${name} sponsor →</small></a>`;
+if ($("tierList")) $("tierList").innerHTML = TIERS.map(([t,name]) => {
+  const list = listed.filter(sp => sp.tier === t);
+  return `<section class="tier tier-${t}" aria-labelledby="tier-${t}">
+    <div class="tier-head"><span class="tier-badge">${name}</span><h2 id="tier-${t}" class="sr-only">${name} sponsors</h2><span class="tier-rule"></span></div>
+    <div class="logo-grid">${list.length ? list.map(logoCard).join("") : openCard(name)}</div>
+  </section>`;
+}).join("");
+if ($("sponsorStrip") && listed.length){
+  $("sponsorStrip").innerHTML = `<span class="label">Thank you to our sponsors</span><div class="strip-logos">${listed.map(logoCard).join("")}</div>`;
+  $("sponsorStrip").hidden = false;
 }
-if ($("partnerRow") && PARTNERS.length){
-  $("partnerRow").innerHTML = `<span class="label">Founding partners</span>` + PARTNERS.map(p => `<span>${esc(p)}</span>`).join("");
-  $("partnerRow").hidden = false;
-}
+if ($("packageList")) $("packageList").innerHTML = PACKAGES.map(pk => `
+  <article class="package spot tier-${pk.tier}${pk.tier==="platinum" ? " featured" : ""}">
+    <span class="tier-badge">${esc(pk.name)}</span>
+    <p class="pk-lead">${esc(pk.lead)}</p>
+    <p class="pk-price">${pk.price ? esc(pk.price) : "Pricing on request"}</p>
+    <ul class="perks">${pk.perks.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+  </article>`).join("");
 
 /* Spotlight glow follows the pointer on cards */
 document.addEventListener("pointermove", e => {

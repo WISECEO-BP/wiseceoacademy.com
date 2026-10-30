@@ -7,7 +7,9 @@ Site for the WISECEO Academy fellowship: an industry-backed, no-cost career fell
 - `tracks.html`: the three tracks and the credential table
 - `agenda.html`: upcoming live sessions and how the fellowship works
 - `speakers.html`: speakers and the call for speakers
-- `partners.html`: ways for companies and funders to partner, and the outcome report
+- `sponsors.html`: thank-you page with Platinum, Gold, Silver, and Bronze sponsor logos
+- `sponsorship.html`: sponsorship packages for companies, and the outcome report
+- `partners.html`: forwards to `sponsorship.html` so old links keep working
 - `faq.html`: questions families ask
 - `apply.html`: application checklist and button
 - `404.html`: page not found
@@ -16,7 +18,8 @@ Site for the WISECEO Academy fellowship: an industry-backed, no-cost career fell
 Almost everything lives in `assets/site.js`. Each list there mirrors an Airtable table.
 - `APPLY_URL`: paste the Airtable application form link. Until then, Apply buttons say "Application opens soon."
 - `PARTNER_URL`: paste the Airtable partner interest form link. Until then, the partners page shows the email address.
-- `PARTNERS`: names of partners who have agreed to be listed. Empty hides the row.
+- `SPONSORS`: list a sponsor only after they agree in writing, with their tier. Put approved logo files in `assets/sponsors/`.
+- `PACKAGES`: sponsorship levels, prices, and benefits shown on the Sponsorship page.
 - `SPEAKERS`: confirmed speakers only. A speaker with a `date` also appears on the Agenda page.
 - `TRACKS` and `CREDENTIALS`: track modules and the credential table.
 
