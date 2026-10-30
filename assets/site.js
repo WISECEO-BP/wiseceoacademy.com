@@ -7,11 +7,10 @@
 /* ===== Settings ===== */
 /* Paste the Airtable application form link here. While empty, Apply buttons say "opens soon". */
 const APPLY_URL = "";
-/* Paste the Airtable partner interest form link here. While empty, the email address shows instead. */
+/* Paste the Airtable partner interest form link here. While empty, the partner button says "opens soon". */
 const PARTNER_URL = "";
 /* Add partner names once they agree to be listed. Empty hides the row. */
 const PARTNERS = [];
-const CONTACT_EMAIL = "info@wiseceoacademy.com";
 
 /* ===== Content ===== */
 const TRACKS = [
@@ -108,11 +107,10 @@ if (menuBtn) menuBtn.addEventListener("click", () => {
 });
 const foot = $("foot");
 if (foot) foot.innerHTML = `<div class="wrap">
-  <span>WISECEO Academy · A training program of W.I.S.E.C.E.O., a 501(c)(3) nonprofit</span>
-  <span>Contact: <span class="sel">${CONTACT_EMAIL}</span></span></div>`;
+  <span>© ${new Date().getFullYear()} WISECEO Academy</span>
+  <span>Career training in cybersecurity, energy and infrastructure, and AI</span></div>`;
 
 document.querySelectorAll("[data-owl]").forEach(el => { el.outerHTML = owl(el.dataset.owl || ""); });
-document.querySelectorAll("[data-email]").forEach(el => { el.textContent = CONTACT_EMAIL; });
 
 /* Hero owl's eyes follow the pointer */
 const heroOwl = document.querySelector(".hero-owl .owl");
@@ -214,7 +212,7 @@ document.querySelectorAll("[data-apply-note]").forEach(el => { el.hidden = !!APP
 const partnerBtn = $("partnerBtn");
 if (partnerBtn){
   if (PARTNER_URL){ partnerBtn.href = PARTNER_URL; }
-  else { partnerBtn.hidden = true; $("partnerNote").hidden = false; }
+  else { partnerBtn.removeAttribute("href"); partnerBtn.setAttribute("aria-disabled","true"); partnerBtn.textContent = "Partner form opens soon"; }
 }
 if ($("partnerRow") && PARTNERS.length){
   $("partnerRow").innerHTML = `<span class="label">Founding partners</span>` + PARTNERS.map(p => `<span>${esc(p)}</span>`).join("");

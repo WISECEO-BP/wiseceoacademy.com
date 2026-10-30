@@ -24,7 +24,7 @@ Shared design is in `assets/site.css`. Hoot the owl, the menu, the footer, and t
 
 ## Launch day
 1. In Settings > Pages, confirm `wiseceoacademy.com` is the custom domain, and turn on Enforce HTTPS once it is offered. The `CNAME` file keeps that setting in place.
-2. In Cloudflare DNS for wiseceoacademy.com, point the domain at GitHub Pages with the records set to DNS only (grey cloud) until HTTPS is issued. Leave every MX and email-related TXT record untouched so info@wiseceoacademy.com keeps working.
+2. In Cloudflare DNS for wiseceoacademy.com, point the domain at GitHub Pages with the records set to DNS only (grey cloud) until HTTPS is issued. Leave every MX and email-related TXT record untouched so the domain's email keeps working.
 3. Done: the noindex lines are removed, so search engines can list the site.
 4. Once the new site loads over HTTPS, cancel the Hostinger Horizons subscription and hosting.
 
