@@ -22,6 +22,7 @@ Almost everything lives in `assets/site.js`. Each list there mirrors an Airtable
 - `PACKAGES`: sponsorship levels, prices, and benefits shown on the Sponsorship page.
 - `SPEAKERS`: confirmed speakers only. A speaker with a `date` also appears on the Agenda page.
 - `TRACKS` and `CREDENTIALS`: track modules and the credential table.
+- `SOCIAL`: paste each social account's full address. Icons show in the footer on every page, and each becomes a link once its address is filled in.
 
 Shared design is in `assets/site.css`. The share image people see when the link is texted or posted is `assets/og-image.png` (1200 × 630). The tab icon is `favicon.svg`, with `favicon.ico` and `apple-touch-icon.png` for older browsers and phones. Opa Homakbi the owl (the name means "Purple Owl"), the menu, the footer, and the animated track lines all come from `assets/site.js`, so every page stays in sync.
 

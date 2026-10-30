@@ -36,6 +36,26 @@ const PACKAGES = [
     perks:["One fellow’s credential exam","Logo on the Sponsors page","Outcome report summary"] }
 ];
 
+/* ===== Social accounts =====
+   Paste each account's full address between the quotes, for example "https://www.instagram.com/yourname".
+   An icon with no address shows in the footer but isn't clickable yet. */
+const SOCIAL = [
+  { id:"linkedin",  name:"LinkedIn",  url:"" },
+  { id:"instagram", name:"Instagram", url:"" },
+  { id:"youtube",   name:"YouTube",   url:"" },
+  { id:"x",         name:"X",         url:"" },
+  { id:"tiktok",    name:"TikTok",    url:"" },
+  { id:"facebook",  name:"Facebook",  url:"" }
+];
+const SOCIAL_ICONS = {
+  linkedin:'<path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/>',
+  instagram:'<g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>',
+  youtube:'<path fill="currentColor" fill-rule="evenodd" d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2 27 27 0 0 0 2 12a27 27 0 0 0 .4 4.8 2.6 2.6 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8A27 27 0 0 0 22 12a27 27 0 0 0-.4-4.8ZM10 15V9l5.2 3z"/>',
+  x:'<path fill="currentColor" d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/>',
+  tiktok:'<path fill="currentColor" d="M16.6 3c.4 2.3 1.9 3.8 4.4 4v3.3c-1.6 0-3-.5-4.3-1.3v6.2a6 6 0 1 1-6-6c.3 0 .6 0 .9.1v3.4a2.7 2.7 0 1 0 1.9 2.6V3z"/>',
+  facebook:'<path fill="currentColor" d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.3c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.4V14h2.7v8z"/>'
+};
+
 /* ===== Content ===== */
 const TRACKS = [
   { id:"cyber", code:"CY", name:"Cybersecurity", color:"--cyber",
@@ -130,9 +150,20 @@ if (menuBtn) menuBtn.addEventListener("click", () => {
   menuBtn.textContent = open ? "Close" : "Menu";
 });
 const foot = $("foot");
-if (foot) foot.innerHTML = `<div class="wrap">
-  <span>© ${new Date().getFullYear()} WISECEO Academy</span>
-  <span>Career training in cybersecurity, energy and infrastructure, and AI</span></div>`;
+if (foot) foot.innerHTML = `<div class="wrap foot">
+  <a class="foot-mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span>WISECEO <span class="grad-text">ACADEMY</span></span></a>
+  <div class="foot-row">
+    <span>© ${new Date().getFullYear()} WISECEO Academy</span>
+    <a href="sponsorship.html">Sponsorship</a>
+    <a href="apply.html">Apply</a>
+  </div>
+  <ul class="social" aria-label="WISECEO Academy on social media">${SOCIAL.map(sc => {
+    const icon = `<svg viewBox="0 0 24 24" aria-hidden="true">${SOCIAL_ICONS[sc.id]}</svg>`;
+    return sc.url
+      ? `<li><a href="${esc(sc.url)}" target="_blank" rel="noopener me" aria-label="WISECEO Academy on ${esc(sc.name)}">${icon}</a></li>`
+      : `<li><span class="soon" title="${esc(sc.name)}: coming soon" aria-label="${esc(sc.name)}, coming soon">${icon}</span></li>`;
+  }).join("")}</ul>
+</div>`;
 
 document.querySelectorAll("[data-owl]").forEach(el => { el.outerHTML = owl(el.dataset.owl || ""); });
 
