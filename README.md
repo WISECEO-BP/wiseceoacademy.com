@@ -8,7 +8,7 @@ Class site for the W.I.S.E.C.E.O. (Worldwide Institute for Success & Excellence)
 - `lessons/`: one file per module (`spot-the-scam.html` is the sample and template)
 - `assets/courses.js`: the course catalog. Edit this file to add modules, change descriptions, or open a module
 - `assets/site.css`: shared design
-- `CNAME.launch`: rename to `CNAME` on launch day (see below)
+- `CNAME`: tells GitHub Pages to serve the site at wiseceoacademy.com
 
 ## Opening a module
 1. Copy `lessons/spot-the-scam.html`, rename it to the module's slug (for example `cia-triad.html`), and replace the content.
@@ -20,7 +20,7 @@ Class site for the W.I.S.E.C.E.O. (Worldwide Institute for Success & Excellence)
 Settings > Pages > Build and deployment > Deploy from a branch > main / root. The site appears at the github.io address shown there. It stays hidden from search engines until you remove the robots line from each page.
 
 ## Launch day
-1. Rename `CNAME.launch` to `CNAME`, then in Settings > Pages enter `wiseceoacademy.com` as the custom domain and turn on Enforce HTTPS once it is offered.
+1. In Settings > Pages, confirm `wiseceoacademy.com` is the custom domain, and turn on Enforce HTTPS once it is offered. The `CNAME` file keeps that setting in place.
 2. In Cloudflare DNS for wiseceoacademy.com, point the domain at GitHub Pages. Leave every MX and email-related TXT record untouched so info@wiseceoacademy.com keeps working.
 3. Delete the `<meta name="robots" content="noindex">` line from every page.
 4. On wiseceo.org, paste `https://wiseceoacademy.com/` into `COURSE_URL` near the bottom of careerpathways.html. That reveals the "Take the classes" buttons.
