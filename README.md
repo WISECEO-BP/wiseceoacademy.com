@@ -23,7 +23,7 @@ Almost everything lives in `assets/site.js`. Each list there mirrors an Airtable
 - `SPEAKERS`: confirmed speakers only. A speaker with a `date` also appears on the Agenda page.
 - `TRACKS` and `CREDENTIALS`: track modules and the credential table.
 
-Shared design is in `assets/site.css`. The tab icon is `favicon.svg`, with `favicon.ico` and `apple-touch-icon.png` for older browsers and phones. Opa Homakbi the owl (the name means "Purple Owl"), the menu, the footer, and the animated track lines all come from `assets/site.js`, so every page stays in sync.
+Shared design is in `assets/site.css`. The share image people see when the link is texted or posted is `assets/og-image.png` (1200 × 630). The tab icon is `favicon.svg`, with `favicon.ico` and `apple-touch-icon.png` for older browsers and phones. Opa Homakbi the owl (the name means "Purple Owl"), the menu, the footer, and the animated track lines all come from `assets/site.js`, so every page stays in sync.
 
 ## Launch day
 1. In Settings > Pages, confirm `wiseceoacademy.com` is the custom domain, and turn on Enforce HTTPS once it is offered. The `CNAME` file keeps that setting in place.
