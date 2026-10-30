@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tracks | WISECEO Academy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!-- Remove the robots line on launch day so search engines can find the site -->
+<meta name="robots" content="noindex">
+<meta name="description" content="Three career tracks, cybersecurity, energy and infrastructure, and AI, with modules for grades 9 to 12 and the credentials each one prepares fellows for.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="tracks">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top" id="siteHeader"></header>
+<main id="main">
+  <section class="page-hero">
+    <canvas class="net" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <p class="label">Three tracks</p>
+      <h1>One route to a <span class="grad-text">first job</span></h1>
+      <p class="lede">Each track connects the classes fellows already take to credentials and entry-level jobs. Level 1 is built for grades 9 and 10, Level 2 for grades 11 and 12. Every module ends with a portfolio project.</p>
+    </div>
+  </section>
+
+  <section class="band" aria-label="Tracks">
+    <div class="wrap"><div class="tracks" id="trackList"></div></div>
+  </section>
+
+  <section class="band" id="credentials" aria-labelledby="cred-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Credential ledger</p>
+        <h2 id="cred-h">What fellows can earn</h2>
+        <p class="lede">Prices and rules change. Fellows confirm details on the provider’s site before registering, and we help with vouchers when they exist.</p>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filter credentials by track"></div>
+      <div class="ledger"><table>
+        <thead><tr><th scope="col">Credential</th><th scope="col">Tracks</th><th scope="col">Level</th><th scope="col">Time</th><th scope="col">Cost</th><th scope="col">Min. age</th></tr></thead>
+        <tbody id="ledgerRows"></tbody>
+      </table></div>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="apply-card">
+        <div class="apply-inner">
+          <p class="label">Next cohort</p>
+          <h2>Ready to <span class="grad-text">get started?</span></h2>
+          <p class="lede">The fellowship is free. A parent or guardian needs to know about your application.</p>
+          <div class="actions">
+            <a class="btn btn-grad" href="apply.html">Apply to the fellowship</a>
+            <a class="btn btn-ghost" href="agenda.html">See how it works</a>
+          </div>
+          <span data-owl></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="foot"></footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

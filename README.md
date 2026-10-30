@@ -1,27 +1,31 @@
-# WISECEO® Stars Academy class site
+# WISECEO Academy
 
-Class site for the W.I.S.E.C.E.O. (Worldwide Institute for Success & Excellence) Career Pathways program. Program details and sign-up stay on wiseceo.org/careerpathways.html; this site is where students take the classes.
+Site for the WISECEO Academy fellowship: an industry-backed, no-cost career fellowship in cybersecurity, energy and infrastructure, and AI for students in grades 9 to 12. Plain HTML, CSS, and JavaScript served by GitHub Pages. No build step.
 
-## Files
-- `index.html`: class home page
-- `cybersecurity.html`, `energy.html`, `ai.html`: one page per track
-- `lessons/`: one file per module (`spot-the-scam.html` is the sample and template)
-- `assets/courses.js`: the course catalog. Edit this file to add modules, change descriptions, or open a module
-- `assets/site.css`: shared design
-- `CNAME`: tells GitHub Pages to serve the site at wiseceoacademy.com
+## Pages
+- `index.html`: home
+- `tracks.html`: the three tracks and the credential table
+- `agenda.html`: upcoming live sessions and how the fellowship works
+- `speakers.html`: speakers and the call for speakers
+- `partners.html`: ways for companies and funders to partner, and the outcome report
+- `faq.html`: questions families ask
+- `apply.html`: application checklist and button
+- `404.html`: page not found
 
-## Opening a module
-1. Copy `lessons/spot-the-scam.html`, rename it to the module's slug (for example `cia-triad.html`), and replace the content.
-2. In that file, change `data-lesson="spot-the-scam"` to the new slug.
-3. In `assets/courses.js`, find the module and set `status:"open"` and `url:"lessons/cia-triad.html"`.
-4. Commit to main.
+## Editing content
+Almost everything lives in `assets/site.js`. Each list there mirrors an Airtable table.
+- `APPLY_URL`: paste the Airtable application form link. Until then, Apply buttons say "Application opens soon."
+- `PARTNER_URL`: paste the Airtable partner interest form link. Until then, the partners page shows the email address.
+- `PARTNERS`: names of partners who have agreed to be listed. Empty hides the row.
+- `SPEAKERS`: confirmed speakers only. A speaker with a `date` also appears on the Agenda page.
+- `TRACKS` and `CREDENTIALS`: track modules and the credential table.
 
-## Preview before launch
-Settings > Pages > Build and deployment > Deploy from a branch > main / root. The site appears at the github.io address shown there. It stays hidden from search engines until you remove the robots line from each page.
+Shared design is in `assets/site.css`. Hoot the owl, the menu, the footer, and the animated track lines all come from `assets/site.js`, so every page stays in sync.
 
 ## Launch day
 1. In Settings > Pages, confirm `wiseceoacademy.com` is the custom domain, and turn on Enforce HTTPS once it is offered. The `CNAME` file keeps that setting in place.
-2. In Cloudflare DNS for wiseceoacademy.com, point the domain at GitHub Pages. Leave every MX and email-related TXT record untouched so info@wiseceoacademy.com keeps working.
+2. In Cloudflare DNS for wiseceoacademy.com, point the domain at GitHub Pages with the records set to DNS only (grey cloud) until HTTPS is issued. Leave every MX and email-related TXT record untouched so info@wiseceoacademy.com keeps working.
 3. Delete the `<meta name="robots" content="noindex">` line from every page.
-4. On wiseceo.org, paste `https://wiseceoacademy.com/` into `COURSE_URL` near the bottom of careerpathways.html. That reveals the "Take the classes" buttons.
-5. Once the new site loads over HTTPS, cancel the Hostinger Horizons subscription and hosting.
+4. Once the new site loads over HTTPS, cancel the Hostinger Horizons subscription and hosting.
+
+The earlier WISECEO® Stars Academy class pages are in the git history if any lesson content is needed again.

@@ -3,61 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WISECEO Academy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <!-- Remove the robots line on launch day so search engines can find the site -->
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>">
+<meta name="description" content="An industry-backed, no-cost fellowship that trains students in grades 9 to 12 for careers and credentials in cybersecurity, energy and infrastructure, and AI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
-<title>WISECEO® Stars Academy | Career Pathways Classes</title>
-<meta name="description" content="Classes in cybersecurity, energy and infrastructure, and AI for students in grades 9 to 12, from WISECEO® Stars Academy.">
 </head>
-<body data-page="home">
+<body data-page="index">
 <a class="skip" href="#main">Skip to content</a>
-<div class="wrap">
-  <header class="topbar" id="topbar"></header>
-
+<header class="top" id="siteHeader"></header>
+<main id="main">
   <section class="hero">
-    <span class="sticker">Grades 9 to 12 · Free classes</span>
-    <h1 class="display">⭐ Your Classes Start Here ⭐</h1>
-    <p class="tagline">Pick a track, work through short modules, build portfolio projects, and get ready for credentials employers recognize.</p>
-    <p class="org">WISECEO® Stars Academy, a program of W.I.S.E.C.E.O. (Worldwide Institute for Success &amp; Excellence)</p>
-    <div class="actions">
-      <a class="btn btn-yellow" href="#tracks">Choose a track</a>
-      <a class="btn btn-white" data-signup href="#">Not signed up yet?</a>
+    <canvas class="net" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="label">Industry-backed fellowship · Grades 9–12 · No cost to fellows</p>
+        <h1>Train for the jobs that keep <span class="grad-text">AI running</span></h1>
+        <p class="lede">Fellows build real skills in cybersecurity, energy and infrastructure, and AI, learn from people who do the work, and prepare for credentials employers already recognize.</p>
+        <div class="actions">
+          <a class="btn btn-grad" href="apply.html">Apply to the fellowship</a>
+          <a class="btn btn-ghost" href="tracks.html">Explore the tracks</a>
+        </div>
+        <ul class="facts" id="facts"></ul>
+      </div>
+      <div class="hero-owl">
+        <span data-owl="Hoot, the WISECEO Academy owl"></span>
+        <span class="bubble" aria-hidden="true">Hoot! Pick a track 👋</span>
+      </div>
     </div>
   </section>
 
-  <main id="main">
-    <section class="block" id="tracks" aria-labelledby="tracks-h">
-      <h2 class="display" id="tracks-h">Choose your track</h2>
-      <p class="lede">Each track has two levels. Level 1 is built for grades 9 and 10, and Level 2 for grades 11 and 12. You can start with any track.</p>
-      <div class="tracks" id="trackCards"></div>
-    </section>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
 
-    <section class="block" aria-labelledby="how-h">
-      <h2 class="display" id="how-h">How it works</h2>
-      <ol class="steps">
-        <li><b>Sign up</b><span>Join the program on wiseceo.org with a parent or guardian’s permission.</span></li>
-        <li><b>Pick a track</b><span>Cybersecurity, Energy &amp; Infrastructure, or AI.</span></li>
-        <li><b>Learn and build</b><span>Each module ends with a project for your portfolio.</span></li>
-        <li><b>Earn credentials</b><span>Prepare for badges and certifications, one at a time.</span></li>
-      </ol>
-    </section>
-
-    <section class="block" aria-labelledby="new-h">
-      <h2 class="display" id="new-h">New here?</h2>
-      <p class="notice">Program details, credential costs, live session dates, and sign-up are all on our main site.</p>
-      <div class="actions" style="justify-content:flex-start">
-        <a class="btn btn-yellow" data-signup href="#">Sign up on wiseceo.org</a>
-        <a class="btn btn-white" data-program href="#">Read the program details</a>
+  <section class="band" aria-labelledby="tracks-h">
+    <div class="wrap">
+      <div class="row-head">
+        <div class="sec-head">
+          <p class="label">Three tracks</p>
+          <h2 id="tracks-h">Pick your <span class="grad-text">line</span></h2>
+        </div>
+        <a class="btn btn-ghost" href="tracks.html">All tracks and credentials</a>
       </div>
-    </section>
-  </main>
+      <div class="teasers" id="trackTeasers"></div>
+    </div>
+  </section>
 
-  <footer id="footer"></footer>
-</div>
-<script src="assets/courses.js"></script>
+  <section class="band" aria-labelledby="speakers-h">
+    <div class="wrap">
+      <div class="row-head">
+        <div class="sec-head">
+          <p class="label">Live sessions</p>
+          <h2 id="speakers-h">Learn from people <span class="grad-text">who do the work</span></h2>
+        </div>
+        <a class="btn btn-ghost" href="speakers.html">Meet the speakers</a>
+      </div>
+      <div class="speakers" id="speakerTeasers"></div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="partners-h">
+    <div class="wrap split">
+      <div class="sec-head" style="align-content:start">
+        <p class="label">For companies and funders</p>
+        <h2 id="partners-h">Back the <span class="grad-text">next workforce</span></h2>
+        <p class="lede">Companies, foundations, and grants fund the fellowship. Partners cover exam fees, host live sessions, and open the door to a first job, then see exactly what their support produced.</p>
+        <div class="actions"><a class="btn btn-grad" href="partners.html">Partner with us</a></div>
+      </div>
+      <div class="ways">
+        <div class="way spot"><b>Sponsor a cohort</b><span>Instruction, devices, and exam vouchers for a group of fellows.</span></div>
+        <div class="way spot"><b>Fund exam vouchers</b><span>So cost is never the reason a fellow stops short.</span></div>
+        <div class="way spot"><b>Host a live session</b><span>A one-hour talk from your security, energy, or AI team.</span></div>
+        <div class="way spot"><b>Open a first job</b><span>Internships, apprenticeships, or job shadows.</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="apply-card">
+        <div class="apply-inner">
+          <p class="label">Next cohort</p>
+          <h2>Ready to <span class="grad-text">get started?</span></h2>
+          <p class="lede">The fellowship is free. A parent or guardian needs to know about your application.</p>
+          <div class="actions">
+            <a class="btn btn-grad" href="apply.html">Apply to the fellowship</a>
+            <a class="btn btn-ghost" href="agenda.html">See how it works</a>
+          </div>
+          <span data-owl></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="foot"></footer>
+<script src="assets/site.js"></script>
 </body>
 </html>

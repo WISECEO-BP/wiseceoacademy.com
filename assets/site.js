@@ -1,0 +1,268 @@
+/* =====================================================================
+   WISECEO Academy: shared content and behavior for every page.
+   Edit the Settings and Content lists below; every page updates.
+   Each content list mirrors an Airtable table (Tracks, Speakers, Credentials).
+   ===================================================================== */
+
+/* ===== Settings ===== */
+/* Paste the Airtable application form link here. While empty, Apply buttons say "opens soon". */
+const APPLY_URL = "";
+/* Paste the Airtable partner interest form link here. While empty, the email address shows instead. */
+const PARTNER_URL = "";
+/* Add partner names once they agree to be listed. Empty hides the row. */
+const PARTNERS = [];
+const CONTACT_EMAIL = "info@wiseceoacademy.com";
+
+/* ===== Content ===== */
+const TRACKS = [
+  { id:"cyber", code:"CY", name:"Cybersecurity", color:"--cyber",
+    icon:'<path d="M12 3l8 3v6c0 4.5-3.4 8.4-8 9-4.6-.6-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+    blurb:"Protect data, people, and systems. Many entry points reward strong reading, writing, and problem-solving more than heavy coding.",
+    l1:["Spot the Scam","The CIA Triad","Privacy and Policy"],
+    l2:["How Networks Work","Risk Analysis","Incident Response Lab"],
+    leads:"IT Help Desk · Junior SOC Analyst · Compliance Associate" },
+  { id:"energy", code:"EN", name:"Energy & Infrastructure", color:"--energy",
+    icon:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+    blurb:"AI runs on electricity, cooling, and water. Learn the systems, trades, and engineering routes that keep it powered.",
+    l1:["Follow the Money","Know Your Community","Reframing the Trades"],
+    l2:["Powering the Future","Energy Audit Project","Routes Into the Field"],
+    leads:"Data Center Technician · Electrical and HVAC apprenticeships" },
+  { id:"ai", code:"AI", name:"AI & Technical Integration", color:"--ai",
+    icon:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/>',
+    blurb:"Learn what AI can and cannot do, use it responsibly, and question how it affects people and communities.",
+    l1:["How AI Works","Prompt Design","The Human Element"],
+    l2:["AI Project Studio","Cloud AI Basics"],
+    leads:"AI-assisted support roles · Data Center Technician" }
+];
+
+/* Add confirmed speakers only. A speaker with a date also appears on the Agenda page.
+   date: "YYYY-MM-DD" · time: "4:00 PM" (Eastern) · photo: an image URL or "" for initials.
+   Example: { name:"Jordan Lee", role:"SOC Analyst", org:"Example Bank", talk:"A day on the security team", track:"cyber", date:"2026-11-12", time:"4:00 PM", photo:"" } */
+const SPEAKERS = [];
+
+/* level: 1 or 2 · cost: "free" | "low" | "paid" · minAge: number or null */
+const CREDENTIALS = [
+  { name:"Elements of AI", provider:"University of Helsinki & MinnaLearn", tracks:["ai"], level:1, time:"~30 hrs", cost:"free", minAge:null },
+  { name:"Introduction to Generative AI", provider:"Google Cloud", tracks:["ai"], level:1, time:"~1 hr", cost:"free", minAge:null },
+  { name:"Google AI Essentials", provider:"Google on Coursera", tracks:["ai"], level:1, time:"<10 hrs", cost:"low", minAge:null },
+  { name:"CISA Learning courses", provider:"U.S. Cybersecurity & Infrastructure Security Agency", tracks:["cyber","energy"], level:2, time:"Self-paced", cost:"free", minAge:null },
+  { name:"Certified in Cybersecurity (CC)", provider:"ISC2", tracks:["cyber","energy"], level:2, time:"Self-paced", cost:"paid", minAge:16 },
+  { name:"CompTIA Tech+", provider:"CompTIA", tracks:["cyber"], level:2, time:"Self-paced", cost:"paid", minAge:null },
+  { name:"CompTIA Security+", provider:"CompTIA", tracks:["cyber"], level:2, time:"Self-paced", cost:"paid", minAge:null },
+  { name:"AWS Certified AI Practitioner", provider:"Amazon Web Services", tracks:["ai"], level:2, time:"Self-paced", cost:"paid", minAge:null }
+];
+
+/* ===================================================================== */
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $ = id => document.getElementById(id);
+const byId = id => TRACKS.find(t => t.id === id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const PAGE = document.body.dataset.page || "";
+
+/* ===== Hoot the owl ===== */
+let owlCount = 0;
+function owl(label){
+  const g = "og" + (++owlCount);
+  const a = label ? `role="img" aria-label="${esc(label)}"` : `aria-hidden="true"`;
+  return `<svg class="owl" viewBox="0 0 200 212" ${a}>
+  <defs><linearGradient id="${g}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8B7BFF"/><stop offset="1" stop-color="#5B47E8"/></linearGradient></defs>
+  <ellipse cx="100" cy="204" rx="44" ry="6" fill="#000" opacity=".18"/>
+  <g class="bob">
+    <path d="M54 66 L44 26 L84 50 Z" fill="#5B47E8"/><path d="M146 66 L156 26 L116 50 Z" fill="#5B47E8"/>
+    <ellipse class="wing-l" cx="40" cy="132" rx="16" ry="34" fill="#4C3AD6"/>
+    <ellipse class="wing-r" cx="160" cy="132" rx="16" ry="34" fill="#4C3AD6"/>
+    <ellipse cx="100" cy="120" rx="64" ry="74" fill="url(#${g})"/>
+    <ellipse cx="100" cy="150" rx="38" ry="38" fill="#E4DEFF"/>
+    <g stroke="#22B8D4" stroke-width="3" fill="none" stroke-linecap="round"><path d="M86 130v14h-12"/><path d="M114 130v22h12"/><path d="M100 136v32"/></g>
+    <g fill="#22B8D4"><circle cx="72" cy="144" r="4"/><circle cx="128" cy="152" r="4"/><circle cx="100" cy="170" r="4"/></g>
+    <circle cx="74" cy="94" r="30" fill="#F7F5FF"/><circle cx="126" cy="94" r="30" fill="#F7F5FF"/>
+    <g class="eyes"><g class="pupils">
+      <circle cx="74" cy="96" r="14" fill="#0A0F1C"/><circle cx="126" cy="96" r="14" fill="#0A0F1C"/>
+      <circle cx="80" cy="90" r="5" fill="#fff"/><circle cx="132" cy="90" r="5" fill="#fff"/>
+    </g></g>
+    <circle cx="52" cy="120" r="7" fill="#FF8FC7" opacity=".75"/><circle cx="148" cy="120" r="7" fill="#FF8FC7" opacity=".75"/>
+    <path d="M91 114 H109 L100 128 Z" fill="#FFB020"/>
+    <g stroke="#FFB020" stroke-width="4" stroke-linecap="round" fill="none"><path d="M78 192 l-6 8 M84 194 v8 M90 192 l6 8"/><path d="M110 192 l-6 8 M116 194 v8 M122 192 l6 8"/></g>
+    <path d="M72 40 v12 q28 12 56 0 v-12 z" fill="#1E293B"/>
+    <path d="M100 16 L152 32 L100 48 L48 32 Z" fill="#273449" stroke="#22D3EE" stroke-width="2" stroke-linejoin="round"/>
+    <g class="tassel"><path d="M100 32 L140 40 L140 62" stroke="#FFB020" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="140" cy="66" r="5.5" fill="#FFB020"/></g>
+    <circle cx="100" cy="32" r="3.5" fill="#FFB020"/>
+  </g></svg>`;
+}
+
+/* ===== Header and footer (one menu for every page) ===== */
+const MENU = [["tracks","tracks.html","Tracks"],["agenda","agenda.html","Agenda"],["speakers","speakers.html","Speakers"],["partners","partners.html","Partners"],["faq","faq.html","FAQ"]];
+const headerEl = $("siteHeader");
+if (headerEl) headerEl.innerHTML = `<div class="wrap">
+  <a class="mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span><b>WISECEO</b><small>ACADEMY</small></span></a>
+  <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
+  <nav class="nav" id="mainNav" aria-label="Main">
+    ${MENU.map(([id,href,label]) => `<a href="${href}"${id===PAGE ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
+    <a class="btn btn-grad" href="apply.html"${PAGE==="apply" ? ' aria-current="page"' : ""}>Apply</a>
+  </nav></div>`;
+const menuBtn = $("menuBtn");
+if (menuBtn) menuBtn.addEventListener("click", () => {
+  const open = $("mainNav").classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", open);
+  menuBtn.textContent = open ? "Close" : "Menu";
+});
+const foot = $("foot");
+if (foot) foot.innerHTML = `<div class="wrap">
+  <span>WISECEO Academy · A training program of W.I.S.E.C.E.O., a 501(c)(3) nonprofit</span>
+  <span>Contact: <span class="sel">${CONTACT_EMAIL}</span></span></div>`;
+
+document.querySelectorAll("[data-owl]").forEach(el => { el.outerHTML = owl(el.dataset.owl || ""); });
+document.querySelectorAll("[data-email]").forEach(el => { el.textContent = CONTACT_EMAIL; });
+
+/* Hero owl's eyes follow the pointer */
+const heroOwl = document.querySelector(".hero-owl .owl");
+if (heroOwl && !reduce){
+  const pupils = heroOwl.querySelector(".pupils");
+  addEventListener("pointermove", e => {
+    const r = heroOwl.getBoundingClientRect();
+    const dx = e.clientX - (r.left + r.width/2), dy = e.clientY - (r.top + r.height*0.45);
+    const d = Math.hypot(dx, dy) || 1, k = Math.min(6, d/40);
+    pupils.style.transform = `translate(${dx/d*k}px,${dy/d*k}px)`;
+  }, { passive:true });
+}
+
+/* ===== Building blocks ===== */
+const glyph = t => `<span class="glyph"><svg viewBox="0 0 24 24" aria-hidden="true">${t.icon}</svg></span>`;
+const moduleCount = TRACKS.reduce((n,t) => n + t.l1.length + t.l2.length, 0);
+const initials = n => n.split(/\s+/).map(w => w[0]).slice(0,2).join("").toUpperCase();
+const fmtDate = iso => { const [y,m,d] = iso.split("-").map(Number); return new Date(Date.UTC(y,m-1,d,12)).toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric",timeZone:"UTC"}); };
+
+function speakerCard(s){
+  const t = byId(s.track) || TRACKS[0];
+  return `<article class="speaker spot" style="--c:var(${t.color})">
+    <div class="avatar">${s.photo ? `<img src="${esc(s.photo)}" alt="">` : `<span>${esc(initials(s.name))}</span>`}</div>
+    <span class="chip">${esc(t.name)}</span>
+    <div><b>${esc(s.name)}</b><p class="role">${esc(s.role)}${s.org ? ", " + esc(s.org) : ""}</p></div>
+    <p class="talk">${esc(s.talk)}</p>
+    ${s.date ? `<span class="label">${esc(fmtDate(s.date))} · ${esc(s.time)} ET</span>` : ""}
+  </article>`;
+}
+const tbaCard = t => `<article class="speaker spot tba" style="--c:var(${t.color})">
+    <div class="avatar"><span>${owl()}</span></div>
+    <span class="chip">${esc(t.name)}</span>
+    <div><b>Speaker announced soon</b><p class="role">A guest from the ${esc(t.name.toLowerCase())} field</p></div>
+  </article>`;
+const speakersOrTba = list => list.length ? list.map(speakerCard).join("") : TRACKS.map(tbaCard).join("");
+
+/* ===== Page sections (each renders only where its container exists) ===== */
+if ($("facts")) $("facts").innerHTML = [
+  [TRACKS.length, "career tracks"], [moduleCount, "modules"], [CREDENTIALS.length, "credentials to aim for"], ["$0", "cost to fellows"]
+].map(([n,l]) => `<li><b class="grad-text">${n}</b><span>${l}</span></li>`).join("");
+
+if ($("ticker")){ const t = CREDENTIALS.map(c => `<span>${esc(c.name)}</span>`).join(""); $("ticker").innerHTML = t + t; }
+
+if ($("trackTeasers")) $("trackTeasers").innerHTML = TRACKS.map(t => `
+  <a class="teaser spot" href="tracks.html#${t.id}" style="--c:var(${t.color})">
+    <div class="track-top">${glyph(t)}<span class="code">TRACK ${t.code}</span></div>
+    <h3>${esc(t.name)}</h3><p>${esc(t.blurb)}</p>
+    <span class="more">Explore the track →</span>
+  </a>`).join("");
+
+if ($("speakerTeasers")) $("speakerTeasers").innerHTML = speakersOrTba(SPEAKERS.slice(0,3));
+if ($("speakerList")) $("speakerList").innerHTML = speakersOrTba(SPEAKERS);
+
+if ($("trackList")) $("trackList").innerHTML = TRACKS.map(t => `
+  <article class="track spot" id="${t.id}" style="--c:var(${t.color})" aria-labelledby="t-${t.id}">
+    <div class="track-top">${glyph(t)}<span class="code">TRACK ${t.code}</span></div>
+    <h3 id="t-${t.id}">${esc(t.name)}</h3>
+    <p>${esc(t.blurb)}</p>
+    <div class="lvl"><span class="label">Level 1 · Grades 9 & 10</span><ol>${t.l1.map(m => `<li>${esc(m)}</li>`).join("")}</ol></div>
+    <div class="lvl"><span class="label">Level 2 · Grades 11 & 12</span><ol>${t.l2.map(m => `<li>${esc(m)}</li>`).join("")}</ol></div>
+    <div class="leads"><span class="label">Where it leads</span><b>${esc(t.leads)}</b></div>
+  </article>`).join("");
+
+if ($("ledgerRows")){
+  const costLabel = { free:"Free", low:"Low cost / aid", paid:"Exam fee" };
+  let filter = "all";
+  const render = () => {
+    $("filters").innerHTML = [["all","All tracks"]].concat(TRACKS.map(t => [t.id, t.name])).map(([v,l]) =>
+      `<button class="filter" type="button" data-v="${v}" aria-pressed="${v===filter}">${esc(l)}</button>`).join("");
+    $("ledgerRows").innerHTML = CREDENTIALS.filter(c => filter==="all" || c.tracks.includes(filter)).map(c => `<tr>
+      <td><div class="cred-name">${esc(c.name)}</div><div class="cred-prov">${esc(c.provider)}</div></td>
+      <td><span class="dots">${c.tracks.map(id => `<span class="dot" style="--c:var(${byId(id).color})" title="${esc(byId(id).name)}"></span>`).join("")}<span class="label">${c.tracks.map(id => byId(id).code).join(" · ")}</span></span></td>
+      <td class="num">L${c.level}</td><td class="num">${esc(c.time)}</td>
+      <td><span class="cost ${c.cost}">${costLabel[c.cost]}</span></td>
+      <td class="num">${c.minAge ? c.minAge + "+" : "None"}</td></tr>`).join("");
+  };
+  $("filters").addEventListener("click", e => { const b = e.target.closest(".filter"); if (b){ filter = b.dataset.v; render(); } });
+  render();
+}
+
+if ($("sessionList")){
+  const today = new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York"}).format(new Date());
+  const upcoming = SPEAKERS.filter(s => s.date && s.date >= today).sort((a,b) => a.date.localeCompare(b.date));
+  $("sessionList").innerHTML = upcoming.length ? upcoming.map(s => { const t = byId(s.track) || TRACKS[0]; return `
+    <article class="session spot" style="--c:var(${t.color})">
+      <div class="when"><b>${esc(fmtDate(s.date))}</b><span class="label">${esc(s.time)} ET</span></div>
+      <div><p class="talk">${esc(s.talk)}</p><span class="fine">${esc(s.name)}, ${esc(s.role)}${s.org ? ", " + esc(s.org) : ""}</span></div>
+      <span class="chip">${esc(t.name)}</span>
+    </article>`; }).join("")
+    : `<div class="empty-state spot">${owl()}<div><b>Session dates are being set</b><p>Live talks with guests from security teams, utilities, and AI companies post here as soon as they’re confirmed. Each one runs about an hour.</p></div></div>`;
+}
+
+/* Calls to action */
+document.querySelectorAll("[data-apply]").forEach(a => {
+  if (APPLY_URL){ a.href = APPLY_URL; a.target = "_blank"; a.rel = "noopener"; }
+  else { a.removeAttribute("href"); a.setAttribute("aria-disabled","true"); a.textContent = "Application opens soon"; }
+});
+document.querySelectorAll("[data-apply-note]").forEach(el => { el.hidden = !!APPLY_URL; });
+const partnerBtn = $("partnerBtn");
+if (partnerBtn){
+  if (PARTNER_URL){ partnerBtn.href = PARTNER_URL; }
+  else { partnerBtn.hidden = true; $("partnerNote").hidden = false; }
+}
+if ($("partnerRow") && PARTNERS.length){
+  $("partnerRow").innerHTML = `<span class="label">Founding partners</span>` + PARTNERS.map(p => `<span>${esc(p)}</span>`).join("");
+  $("partnerRow").hidden = false;
+}
+
+/* Spotlight glow follows the pointer on cards */
+document.addEventListener("pointermove", e => {
+  const card = e.target.closest && e.target.closest(".spot"); if (!card) return;
+  const r = card.getBoundingClientRect();
+  card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  card.style.setProperty("--my", `${e.clientY - r.top}px`);
+}, { passive:true });
+
+/* ===== Network motion: three track lines carrying glowing data packets ===== */
+document.querySelectorAll("canvas.net").forEach(cv => {
+  const ctx = cv.getContext("2d");
+  let w = 0, h = 0, colors = [], running = true;
+  const packets = [];
+  const readColors = () => { const cs = getComputedStyle(document.documentElement);
+    colors = TRACKS.map(t => cs.getPropertyValue(t.color).trim()); };
+  const size = () => { const dpr = Math.min(devicePixelRatio || 1, 2), r = cv.getBoundingClientRect();
+    w = r.width; h = r.height; cv.width = w*dpr; cv.height = h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); };
+  const yAt = (i, x) => h*(0.28 + i*0.22) + Math.sin(x/w*Math.PI*2.2 + i*1.7)*h*0.07;
+  for (let i = 0; i < 3; i++) for (let k = 0; k < 4; k++) packets.push({ line:i, t:Math.random(), v:0.0012 + Math.random()*0.0018 });
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = colors[0]; ctx.globalAlpha = .12;
+    for (let x = 14; x < w; x += 28) for (let y = 14; y < h; y += 28) ctx.fillRect(x, y, 1.5, 1.5);
+    colors.forEach((c,i) => {
+      ctx.globalAlpha = .35; ctx.strokeStyle = c; ctx.lineWidth = 2; ctx.beginPath();
+      for (let x = 0; x <= w; x += 8) x ? ctx.lineTo(x, yAt(i,x)) : ctx.moveTo(x, yAt(i,x));
+      ctx.stroke();
+    });
+    packets.forEach(p => {
+      const x = p.t*w, y = yAt(p.line, x);
+      ctx.globalAlpha = 1; ctx.fillStyle = colors[p.line]; ctx.shadowColor = colors[p.line]; ctx.shadowBlur = 16;
+      ctx.beginPath(); ctx.arc(x, y, 3.5, 0, Math.PI*2); ctx.fill(); ctx.shadowBlur = 0;
+    });
+    ctx.globalAlpha = 1;
+  }
+  function loop(){ if (!running) return; packets.forEach(p => { p.t = (p.t + p.v) % 1; }); draw(); requestAnimationFrame(loop); }
+  readColors(); size(); draw();
+  addEventListener("resize", () => { size(); draw(); });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { readColors(); draw(); });
+  new MutationObserver(() => { readColors(); draw(); }).observe(document.documentElement, { attributes:true, attributeFilter:["data-theme"] });
+  if (!reduce){
+    new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) loop(); }).observe(cv);
+    loop();
+  }
+});
