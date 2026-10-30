@@ -7,9 +7,10 @@ Site for the WISECEO Academy fellowship: an industry-backed, no-cost career fell
 - `tracks.html`: the three tracks and the credential table
 - `agenda.html`: upcoming live sessions and how the fellowship works
 - `speakers.html`: speakers and the call for speakers
-- `sponsors.html`: thank-you page with Platinum, Gold, Silver, and Bronze sponsor logos
-- `sponsorship.html`: sponsorship packages for companies, and the outcome report
-- `partners.html`: forwards to `sponsorship.html` so old links keep working
+- `sponsors.html`: everything for sponsors in one page: labor market data, why sponsor, sponsorship levels, the outcome report, sponsor logos by tier, and sources
+- `sponsorship.html`, `partners.html`: forward to `sponsors.html` so old links keep working
+
+The labor statistics on `sponsors.html` come from the BLS Occupational Outlook Handbook (pay from May 2023, projections for 2023–2033). When BLS publishes a newer edition, update the numbers and the years in the Sources list together.
 - `faq.html`: questions families ask
 - `apply.html`: application checklist and button
 - `404.html`: page not found

@@ -154,7 +154,7 @@ if (foot) foot.innerHTML = `<div class="wrap foot">
   <a class="foot-mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span>WISECEO <span class="grad-text">ACADEMY</span></span></a>
   <div class="foot-row">
     <span>© ${new Date().getFullYear()} WISECEO Academy</span>
-    <a href="sponsorship.html">Sponsorship</a>
+    <a href="sponsors.html">Sponsorship</a>
     <a href="apply.html">Apply</a>
   </div>
   <ul class="social" aria-label="WISECEO Academy on social media">${SOCIAL.map(sc => {
@@ -275,7 +275,7 @@ const logoCard = sp => {
   const inner = sp.logo ? `<img src="${esc(sp.logo)}" alt="${esc(sp.name)}">` : `<span class="wordmark">${esc(sp.name)}</span>`;
   return sp.url ? `<a class="logo-card" href="${esc(sp.url)}" target="_blank" rel="noopener">${inner}</a>` : `<div class="logo-card">${inner}</div>`;
 };
-const openCard = name => `<a class="logo-card open" href="sponsorship.html"><span>Your logo here</span><small>Become a ${name} sponsor →</small></a>`;
+const openCard = name => `<a class="logo-card open" href="#packages"><span>Your logo here</span><small>Become a ${name} sponsor →</small></a>`;
 if ($("tierList")) $("tierList").innerHTML = TIERS.map(([t,name]) => {
   const list = listed.filter(sp => sp.tier === t);
   return `<section class="tier tier-${t}" aria-labelledby="tier-${t}">
