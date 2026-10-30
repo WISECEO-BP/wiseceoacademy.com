@@ -17,13 +17,13 @@ Site for the WISECEO Academy fellowship: an industry-backed, no-cost career fell
 ## Editing content
 Almost everything lives in `assets/site.js`. Each list there mirrors an Airtable table.
 - `APPLY_URL`: paste the Airtable application form link. Until then, Apply buttons say "Application opens soon."
-- `PARTNER_URL`: paste the Airtable partner interest form link. Until then, the partners page shows the email address.
+- `PARTNER_URL`: paste the Airtable sponsor interest form link. Until then, sponsor buttons say "Sponsor form opens soon."
 - `SPONSORS`: list a sponsor only after they agree in writing, with their tier. Put approved logo files in `assets/sponsors/`.
 - `PACKAGES`: sponsorship levels, prices, and benefits shown on the Sponsorship page.
 - `SPEAKERS`: confirmed speakers only. A speaker with a `date` also appears on the Agenda page.
 - `TRACKS` and `CREDENTIALS`: track modules and the credential table.
 
-Shared design is in `assets/site.css`. Hoot the owl, the menu, the footer, and the animated track lines all come from `assets/site.js`, so every page stays in sync.
+Shared design is in `assets/site.css`. The tab icon is `favicon.svg`, with `favicon.ico` and `apple-touch-icon.png` for older browsers and phones. Opa Homakbi the owl (the name means "Purple Owl"), the menu, the footer, and the animated track lines all come from `assets/site.js`, so every page stays in sync.
 
 ## Launch day
 1. In Settings > Pages, confirm `wiseceoacademy.com` is the custom domain, and turn on Enforce HTTPS once it is offered. The `CNAME` file keeps that setting in place.

@@ -82,7 +82,7 @@ const byId = id => TRACKS.find(t => t.id === id);
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const PAGE = document.body.dataset.page || "";
 
-/* ===== Hoot the owl ===== */
+/* ===== Opa Homakbi ("Purple Owl"), the academy owl ===== */
 let owlCount = 0;
 function owl(label){
   const g = "og" + (++owlCount);
