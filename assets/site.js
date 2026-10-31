@@ -117,11 +117,11 @@ const SPEAKERS = [];
 
 /* Organizations whose tools, courses, or credentials fellows use or prepare for (see CREDENTIALS; Figma is used for design projects).
    Shown as plain names under "Fellows train with tools from". This is not a sponsor list. */
-const TOOL_PROVIDERS = ["Microsoft","Google Cloud","Amazon Web Services","Amazon Future Engineer","Figma","CompTIA","ISC2","CISA","Coursera","University of Helsinki"];
+const TOOL_PROVIDERS = ["Microsoft","Google Cloud","Amazon Web Services","Amazon Future Engineer","Figma","CompTIA","ISC2","CISA","Coursera"];
 
 /* level: 1 or 2 · cost: "free" | "low" | "paid" · minAge: number or null */
 const CREDENTIALS = [
-  { name:"Elements of AI", provider:"University of Helsinki & MinnaLearn", tracks:["ai"], level:1, time:"~30 hrs", cost:"free", minAge:null },
+  { name:"Elements of AI", provider:"MinnaLearn", tracks:["ai"], level:1, time:"~30 hrs", cost:"free", minAge:null },
   { name:"Introduction to Generative AI", provider:"Google Cloud", tracks:["ai"], level:1, time:"~1 hr", cost:"free", minAge:null },
   { name:"Google AI Essentials", provider:"Google on Coursera", tracks:["ai"], level:1, time:"<10 hrs", cost:"low", minAge:null },
   { name:"CISA Learning courses", provider:"U.S. Cybersecurity & Infrastructure Security Agency", tracks:["cyber","energy"], level:2, time:"Self-paced", cost:"free", minAge:null },
