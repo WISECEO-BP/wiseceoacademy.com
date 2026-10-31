@@ -354,3 +354,19 @@ table.compare tbody th{text-transform:none;letter-spacing:0}
   table.compare thead th{width:132px}
   table.compare thead th.corner{width:140px}
 }
+.ledger td.cred-name a{color:inherit;text-decoration:none}
+.ledger td.cred-name a:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* On-page pop-up */
+.data-btn{justify-self:start;font:600 .85rem/1 var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:.6em 1em;cursor:pointer}
+.data-btn::before{content:"i";display:inline-grid;place-items:center;width:1.2em;height:1.2em;margin-right:.45em;border-radius:50%;background:var(--grad);color:var(--on-grad);font:700 .75rem/1 var(--mono)}
+.data-btn:hover{border-color:var(--violet)}
+dialog.pop{border:0;padding:0;border-radius:22px;max-width:min(520px,calc(100vw - 32px));background:var(--surface);color:var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+dialog.pop::backdrop{background:rgba(10,15,28,.6);backdrop-filter:blur(4px)}
+.pop-inner{padding:28px 26px;display:grid;gap:14px;border-top:4px solid transparent;border-image:var(--grad) 1}
+.pop-inner h2{font-size:1.4rem}
+.pop-inner p,.pop-inner ul{margin:0;color:var(--ink-2)}
+.pop-inner ul{padding-left:1.2em;display:grid;gap:6px}
+.pop-inner b{color:var(--ink)}
+.pop-inner .btn{justify-self:start}
+.stat .src{cursor:default}

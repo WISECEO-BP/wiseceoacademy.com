@@ -49,12 +49,13 @@
         <p class="label">Why now</p>
         <h2 id="gap-h">The talent gap is <span class="grad-text">already here</span></h2>
         <p class="lede">U.S. Bureau of Labor Statistics projections for 2023 to 2033. The average for all occupations is 4% growth.</p>
+        <button class="data-btn" type="button" data-open="dataInfo">About this data</button>
       </div>
       <div class="stats">
-        <div class="stat spot" style="--c:var(--cyber)"><b class="grad-text">33%</b><span>projected growth for information security analysts</span><a class="src" href="#src-1">Source 1</a></div>
-        <div class="stat spot" style="--c:var(--ai)"><b class="grad-text">36%</b><span>projected growth for data scientists, who build and test AI models</span><a class="src" href="#src-2">Source 2</a></div>
-        <div class="stat spot" style="--c:var(--ai)"><b class="grad-text">$145,080</b><span>median pay for computer and information research scientists, who create new AI</span><a class="src" href="#src-3">Source 3</a></div>
-        <div class="stat spot"><b class="grad-text">356,700</b><span>openings a year in computer and IT jobs, on average</span><a class="src" href="#src-4">Source 4</a></div>
+        <div class="stat spot" style="--c:var(--cyber)"><b class="grad-text">33%</b><span>projected growth for information security analysts</span><span class="src">BLS</span></div>
+        <div class="stat spot" style="--c:var(--ai)"><b class="grad-text">36%</b><span>projected growth for data scientists, who build and test AI models</span><span class="src">BLS</span></div>
+        <div class="stat spot" style="--c:var(--ai)"><b class="grad-text">$145,080</b><span>median pay for computer and information research scientists, who create new AI</span><span class="src">BLS</span></div>
+        <div class="stat spot"><b class="grad-text">356,700</b><span>openings a year in computer and IT jobs, on average</span><span class="src">BLS</span></div>
       </div>
     </div>
   </section>
@@ -67,17 +68,31 @@
         <p class="lede">Median yearly pay, May 2023, and projected job growth from 2023 to 2033.</p>
       </div>
       <div class="ledger"><table>
-        <thead><tr><th scope="col">Occupation</th><th scope="col">Track</th><th scope="col">Median pay</th><th scope="col">Growth</th><th scope="col">Source</th></tr></thead>
+        <thead><tr><th scope="col">Occupation</th><th scope="col">Track</th><th scope="col">Median pay</th><th scope="col">Growth</th></tr></thead>
         <tbody>
-          <tr><td class="cred-name">Computer and information research scientists <span class="cred-prov">(AI and machine learning)</span></td><td><span class="dots"><span class="dot" style="--c:var(--ai)"></span><span class="label">AI</span></span></td><td class="num">$145,080</td><td class="num">+26%</td><td class="num"><a href="#src-3">3</a></td></tr>
-          <tr><td class="cred-name">Computer network architects <span class="cred-prov">(data center and cloud networks)</span></td><td><span class="dots"><span class="dot" style="--c:var(--energy)"></span><span class="dot" style="--c:var(--cyber)"></span><span class="label">EN · CY</span></span></td><td class="num">$129,840</td><td class="num">+13%</td><td class="num"><a href="#src-5">5</a></td></tr>
-          <tr><td class="cred-name">Information security analysts</td><td><span class="dots"><span class="dot" style="--c:var(--cyber)"></span><span class="label">CY</span></span></td><td class="num">$120,360</td><td class="num">+33%</td><td class="num"><a href="#src-1">1</a></td></tr>
-          <tr><td class="cred-name">Data scientists</td><td><span class="dots"><span class="dot" style="--c:var(--ai)"></span><span class="label">AI</span></span></td><td class="num">$108,020</td><td class="num">+36%</td><td class="num"><a href="#src-2">2</a></td></tr>
-          <tr><td class="cred-name">Computer and IT occupations, all</td><td><span class="dots"><span class="dot" style="--c:var(--cyber)"></span><span class="dot" style="--c:var(--ai)"></span><span class="label">CY · AI</span></span></td><td class="num">$104,420</td><td class="num">Much faster than average</td><td class="num"><a href="#src-4">4</a></td></tr>
+          <tr><td class="cred-name">Computer and information research scientists <span class="cred-prov">(AI and machine learning)</span></td><td><span class="dots"><span class="dot" style="--c:var(--ai)"></span><span class="label">AI</span></span></td><td class="num">$145,080</td><td class="num">+26%</td></tr>
+          <tr><td class="cred-name">Computer network architects <span class="cred-prov">(data center and cloud networks)</span></td><td><span class="dots"><span class="dot" style="--c:var(--energy)"></span><span class="dot" style="--c:var(--cyber)"></span><span class="label">EN · CY</span></span></td><td class="num">$129,840</td><td class="num">+13%</td></tr>
+          <tr><td class="cred-name">Information security analysts</td><td><span class="dots"><span class="dot" style="--c:var(--cyber)"></span><span class="label">CY</span></span></td><td class="num">$120,360</td><td class="num">+33%</td></tr>
+          <tr><td class="cred-name">Data scientists</td><td><span class="dots"><span class="dot" style="--c:var(--ai)"></span><span class="label">AI</span></span></td><td class="num">$108,020</td><td class="num">+36%</td></tr>
+          <tr><td class="cred-name">Computer and IT occupations, all</td><td><span class="dots"><span class="dot" style="--c:var(--cyber)"></span><span class="dot" style="--c:var(--ai)"></span><span class="label">CY · AI</span></span></td><td class="num">$104,420</td><td class="num">Much faster than average</td></tr>
         </tbody>
       </table></div>
     </div>
   </section>
+
+  <dialog class="pop" id="dataInfo" aria-labelledby="dataInfo-h">
+    <div class="pop-inner">
+      <h2 id="dataInfo-h">About this data</h2>
+      <p>All figures come from the U.S. Bureau of Labor Statistics, Occupational Outlook Handbook.</p>
+      <ul>
+        <li><b>Median pay:</b> May 2023</li>
+        <li><b>Job growth and openings:</b> projections for 2023 to 2033</li>
+        <li><b>Average growth for all jobs:</b> 4%</li>
+      </ul>
+      <p>The Bureau does not yet track prompt engineers or AI language specialists as separate jobs. The closest it tracks is computer and information research scientists, shown here.</p>
+      <button class="btn btn-grad" type="button" data-close>Close</button>
+    </div>
+  </dialog>
 
   <section class="band" aria-labelledby="why-h">
     <div class="wrap">
@@ -145,7 +160,7 @@
 
   <section class="band" id="thanks" aria-labelledby="thanks-h">
     <div class="wrap">
-      <div class="sec-head"><p class="label">Our sponsors</p><h2 id="thanks-h">Thank you to our <span class="grad-text">sponsors and supporters</span></h2></div>
+      <div class="sec-head"><p class="label">Our sponsors</p><h2 id="thanks-h">Thank you to our <span class="grad-text">sponsors and partners</span></h2></div>
       <div class="tiers" id="tierList"></div>
     </div>
   </section>
@@ -164,18 +179,6 @@
     </div>
   </section>
 
-  <section class="band" aria-labelledby="src-h">
-    <div class="wrap">
-      <h2 id="src-h" class="label">Sources</h2>
-      <ol class="sources">
-        <li id="src-1">U.S. Bureau of Labor Statistics, Occupational Outlook Handbook, <a href="https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm" target="_blank" rel="noopener">Information Security Analysts</a>. Median pay May 2023; projections 2023–2033.</li>
-        <li id="src-2">U.S. Bureau of Labor Statistics, Occupational Outlook Handbook, <a href="https://www.bls.gov/ooh/math/data-scientists.htm" target="_blank" rel="noopener">Data Scientists</a>. Median pay May 2023; projections 2023–2033.</li>
-        <li id="src-3">U.S. Bureau of Labor Statistics, Occupational Outlook Handbook, <a href="https://www.bls.gov/ooh/computer-and-information-technology/computer-and-information-research-scientists.htm" target="_blank" rel="noopener">Computer and Information Research Scientists</a>. Median pay May 2023; projections 2023–2033. BLS does not yet track prompt engineers or AI language specialists as separate occupations.</li>
-        <li id="src-4">U.S. Bureau of Labor Statistics, Occupational Outlook Handbook, <a href="https://www.bls.gov/ooh/computer-and-information-technology/home.htm" target="_blank" rel="noopener">Computer and Information Technology Occupations</a>. Median pay May 2023; openings 2023–2033.</li>
-        <li id="src-5">U.S. Bureau of Labor Statistics, Occupational Outlook Handbook, <a href="https://www.bls.gov/ooh/computer-and-information-technology/computer-network-architects.htm" target="_blank" rel="noopener">Computer Network Architects</a>. Median pay May 2023; projections 2023–2033.</li>
-      </ol>
-    </div>
-  </section>
 </main>
 <footer id="foot"></footer>
 <script src="assets/site.js"></script>

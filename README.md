@@ -7,19 +7,23 @@ Site for the WISECEO Academy fellowship: an industry-backed, no-cost career fell
 - `tracks.html`: the three tracks and the credential table
 - `agenda.html`: upcoming live sessions and how the fellowship works
 - `speakers.html`: speakers and the call for speakers
-- `sponsors.html`: everything for sponsors in one page: labor market data, why sponsor, sponsorship levels, the outcome report, sponsor logos by tier, and sources
+- `sponsors.html`: everything for sponsors in one page: labor market data, why sponsor, sponsorship levels, the outcome report, sponsor logos by tier
 - `sponsorship.html`, `partners.html`: forward to `sponsors.html` so old links keep working
 
-The labor statistics on `sponsors.html` come from the BLS Occupational Outlook Handbook (pay from May 2023, projections for 2023–2033). When BLS publishes a newer edition, update the numbers and the years in the Sources list together.
 - `faq.html`: questions families ask
 - `apply.html`: application checklist and button
 - `404.html`: page not found
+
+The labor statistics on `sponsors.html` come from the BLS Occupational Outlook Handbook (pay from May 2023, projections for 2023–2033). When BLS publishes a newer edition, update the numbers on the page. Each number links straight to its BLS page.
+
+## Site rule: keep visitors here
+Never link to other websites. Show outside information (sources, partner details) in an on-page pop-up instead: add a `<dialog class="pop">` and a button with `data-open` set to its id. The only links that leave the site are WISECEO Academy's own social accounts and its own Airtable forms.
 
 ## Editing content
 Almost everything lives in `assets/site.js`. Each list there mirrors an Airtable table.
 - `APPLY_URL`: paste the Airtable application form link. Until then, Apply buttons say "Application opens soon."
 - `PARTNER_URL`: paste the Airtable sponsor interest form link. Until then, sponsor buttons say "Sponsor form opens soon."
-- `SPONSORS`: list a sponsor only after they agree in writing, with their tier. Put approved logo files in `assets/sponsors/`.
+- `SPONSORS`: list a sponsor only after they agree in writing, with their tier. Put approved logo files in `assets/sponsors/`. Sponsor tiles never link to sponsor websites.
 - `PACKAGES`: the five sponsorship levels (Platinum, Gold, Silver, Bronze, Community), prices, and the short benefit list on each card.
 - `COMPARE`: the "Compare all benefits" table on the Sponsors page, one value per level in the same order as `PACKAGES`. All benefits are online: live sessions, the WISECEO Academy newsletter, the website, and social media.
 - `SPEAKERS`: confirmed speakers only. A speaker with a `date` also appears on the Agenda page.

@@ -11,21 +11,22 @@ const APPLY_URL = "";
 const PARTNER_URL = "";
 /* ===== Sponsors =====
    List a sponsor only after they have agreed in writing to be named, at a tier they chose.
-   tier: "platinum" | "gold" | "silver" | "bronze" for paid sponsors, or "supporter" for in-kind help (tools, discounts)
+   tier: "platinum" | "gold" | "silver" | "bronze" for paid sponsors, or "supporter" for Platform Partners
    logo: path to an approved logo file in assets/sponsors/ (for example "assets/sponsors/acme.svg"),
          or "" to show the name as text until the logo arrives.
-   url: the sponsor's website, or "".
+   No links to sponsor websites: the site never sends visitors elsewhere.
    note: optional short line under the name saying what they give, for example "In-kind: 50% off software".
    To publish one of the examples below, move it out of the comment and set its tier. */
 const SPONSORS = [
-  /* { name:"Google for Nonprofits", tier:"", logo:"", url:"https://www.google.com/nonprofits/" }, */
-  /* { name:"Candid", tier:"", logo:"", url:"https://candid.org/" }, */
-  /* { name:"Amazon Future Engineer", tier:"", logo:"", url:"https://www.amazonfutureengineer.com/" }, */
-  { name:"TechOlympics", tier:"supporter", logo:"", url:"https://techolympics.org/" },
-  { name:"GitHub", tier:"supporter", logo:"", url:"https://github.com/" },
-  { name:"Figma", tier:"supporter", logo:"", url:"https://www.figma.com/education/" },
-  { name:"Airtable", tier:"supporter", logo:"", url:"https://www.airtable.com/" },
-  { name:"beehiiv", tier:"supporter", logo:"", url:"https://www.beehiiv.com/" },
+  /* { name:"Google for Nonprofits", tier:"", logo:"" }, */
+  /* { name:"Candid", tier:"", logo:"" }, */
+  /* { name:"Amazon Future Engineer", tier:"", logo:"" }, */
+  { name:"TechOlympics", tier:"supporter", logo:"" },
+  { name:"Google", tier:"supporter", logo:"" },
+  { name:"GitHub", tier:"supporter", logo:"" },
+  { name:"Figma", tier:"supporter", logo:"" },
+  { name:"Airtable", tier:"supporter", logo:"" },
+  { name:"beehiiv", tier:"supporter", logo:"" },
 ];
 
 /* Sponsorship packages shown on the Sponsorship page. price: "" shows "Pricing on request".
@@ -319,7 +320,7 @@ const supporters = SPONSORS.filter(sp => sp.tier === "supporter");
 const logoCard = sp => {
   const inner = (sp.logo ? `<img src="${esc(sp.logo)}" alt="${esc(sp.name)}">` : `<span class="wordmark">${esc(sp.name)}</span>`)
     + (sp.note ? `<span class="sp-note">${esc(sp.note)}</span>` : "");
-  return sp.url ? `<a class="logo-card" href="${esc(sp.url)}" target="_blank" rel="noopener">${inner}</a>` : `<div class="logo-card">${inner}</div>`;
+  return `<div class="logo-card">${inner}</div>`;
 };
 const openCard = name => `<a class="logo-card open" href="#packages"><span>Your logo here</span><small>Become a ${name} sponsor →</small></a>`;
 if ($("tierList")) $("tierList").innerHTML = TIERS.map(([t,name]) => {
@@ -329,12 +330,11 @@ if ($("tierList")) $("tierList").innerHTML = TIERS.map(([t,name]) => {
     <div class="logo-grid">${list.length ? list.map(logoCard).join("") : openCard(name)}</div>
   </section>`;
 }).join("") + (supporters.length ? `<section class="tier tier-supporter" aria-labelledby="tier-supporter">
-    <div class="tier-head"><span class="tier-badge">Supporters</span><h2 id="tier-supporter" class="sr-only">Supporters</h2><span class="tier-rule"></span></div>
-    <p class="fine">Companies whose tools help us run the program.</p>
+    <div class="tier-head"><span class="tier-badge">Platform Partners</span><h2 id="tier-supporter" class="sr-only">Platform Partners</h2><span class="tier-rule"></span></div>
     <div class="logo-grid">${supporters.map(logoCard).join("")}</div>
   </section>` : "");
 if ($("sponsorStrip") && (listed.length || supporters.length)){
-  $("sponsorStrip").innerHTML = `<span class="label">Thank you to our ${listed.length && supporters.length ? "sponsors and supporters" : listed.length ? "sponsors" : "supporters"}</span><div class="strip-logos">${listed.concat(supporters).map(logoCard).join("")}</div>`;
+  $("sponsorStrip").innerHTML = `<span class="label">Thank you to our ${listed.length && supporters.length ? "sponsors and partners" : listed.length ? "sponsors" : "platform partners"}</span><div class="strip-logos">${listed.concat(supporters).map(logoCard).join("")}</div>`;
   $("sponsorStrip").hidden = false;
 }
 if ($("compareTable")){
@@ -351,6 +351,14 @@ if ($("packageList")) $("packageList").innerHTML = PACKAGES.map(pk => `
     <p class="pk-price">${pk.price ? esc(pk.price) : "Pricing on request"}</p>
     <ul class="perks">${pk.perks.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
   </article>`).join("");
+
+/* On-page pop-ups: a button with data-open="id" opens that dialog; data-close or a click outside closes it */
+document.querySelectorAll("[data-open]").forEach(btn => btn.addEventListener("click", () => {
+  const d = $(btn.dataset.open); if (d && d.showModal) d.showModal();
+}));
+document.querySelectorAll("dialog.pop").forEach(d => {
+  d.addEventListener("click", e => { if (e.target === d || e.target.closest("[data-close]")) d.close(); });
+});
 
 /* Spotlight glow follows the pointer on cards */
 document.addEventListener("pointermove", e => {
