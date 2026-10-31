@@ -90,7 +90,7 @@ const SPEAKERS = [];
 
 /* Organizations whose tools, courses, or credentials fellows use or prepare for (see CREDENTIALS; Figma is used for design projects).
    Shown as plain names under "Fellows train with tools from". This is not a sponsor list. */
-const TOOL_PROVIDERS = ["Microsoft","Google Cloud","Amazon Web Services","Figma","CompTIA","ISC2","CISA","Coursera","University of Helsinki"];
+const TOOL_PROVIDERS = ["Microsoft","Google Cloud","Amazon Web Services","Amazon Future Engineer","Figma","CompTIA","ISC2","CISA","Coursera","University of Helsinki"];
 
 /* level: 1 or 2 · cost: "free" | "low" | "paid" · minAge: number or null */
 const CREDENTIALS = [
