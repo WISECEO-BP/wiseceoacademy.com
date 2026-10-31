@@ -380,3 +380,6 @@ dialog.pop::backdrop{background:rgba(10,15,28,.6);backdrop-filter:blur(4px)}
 .partner-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05);border-color:#cbd5e1}
 .partner-card img{max-width:100%;max-height:40px;object-fit:contain}
 .partner-name{font-size:1.1rem;font-weight:600;color:#1e293b}
+.reg{font-size:.42em;font-weight:600;vertical-align:super;line-height:0;margin-left:1px;letter-spacing:0}
+.foot-row .reg{font-size:.55em}
+.tm-note{display:block;margin-top:4px;font-size:.72rem;color:var(--ink-2);font-weight:400}

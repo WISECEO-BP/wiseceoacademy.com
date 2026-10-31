@@ -176,7 +176,7 @@ function owl(label){
 const MENU = [["tracks","tracks.html","Tracks"],["agenda","agenda.html","Agenda"],["speakers","speakers.html","Speakers"],["sponsors","sponsors.html","Sponsors"],["faq","faq.html","FAQ"]];
 const headerEl = $("siteHeader");
 if (headerEl) headerEl.innerHTML = `<div class="wrap">
-  <a class="mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span><b>WISECEO</b><small>ACADEMY</small></span></a>
+  <a class="mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span><b>WISECEO<sup class="reg" aria-hidden="true">®</sup></b><small>ACADEMY</small></span></a>
   <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
   <nav class="nav" id="mainNav" aria-label="Main">
     ${MENU.map(([id,href,label]) => `<a href="${href}"${id===PAGE ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
@@ -190,9 +190,9 @@ if (menuBtn) menuBtn.addEventListener("click", () => {
 });
 const foot = $("foot");
 if (foot) foot.innerHTML = `<div class="wrap foot">
-  <a class="foot-mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span>WISECEO <span class="grad-text">ACADEMY</span></span></a>
+  <a class="foot-mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span>WISECEO<sup class="reg" aria-hidden="true">®</sup> <span class="grad-text">ACADEMY</span></span></a>
   <div class="foot-row">
-    <span>© ${new Date().getFullYear()} WISECEO Academy</span>
+    <span>© ${new Date().getFullYear()} WISECEO<sup class="reg">®</sup> Academy<small class="tm-note">WISECEO is a registered trademark of Tiffany Davidson, U.S. Reg. No. 6,954,676.</small></span>
     <a href="sponsors.html">Sponsorship</a>
     <a href="apply.html">Apply</a>
   </div>
