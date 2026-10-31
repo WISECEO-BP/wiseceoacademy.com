@@ -15,12 +15,16 @@ const PARTNER_URL = "";
    logo: path to an approved logo file in assets/sponsors/ (for example "assets/sponsors/acme.svg"),
          or "" to show the name as text until the logo arrives.
    url: the sponsor's website, or "".
+   note: optional short line under the name saying what they give, for example "In-kind: 50% off software".
    To publish one of the examples below, move it out of the comment and set its tier. */
 const SPONSORS = [
   /* { name:"Google for Nonprofits", tier:"", logo:"", url:"https://www.google.com/nonprofits/" }, */
   /* { name:"Candid", tier:"", logo:"", url:"https://candid.org/" }, */
   /* { name:"TechOlympics, presented by Procter & Gamble", tier:"", logo:"", url:"https://techolympics.org/" }, */
   /* { name:"Amazon Future Engineer", tier:"", logo:"", url:"https://www.amazonfutureengineer.com/" }, */
+  { name:"Figma", tier:"bronze", logo:"", url:"https://www.figma.com/education/", note:"In-kind: free classroom accounts" },
+  { name:"Airtable", tier:"bronze", logo:"", url:"https://www.airtable.com/", note:"In-kind: 50% off software" },
+  { name:"beehiiv", tier:"bronze", logo:"", url:"https://www.beehiiv.com/", note:"In-kind: 20% off software" },
 ];
 
 /* Sponsorship packages shown on the Sponsorship page. price: "" shows "Pricing on request".
@@ -285,7 +289,8 @@ document.querySelectorAll("[data-tools]").forEach(el => {
 const TIERS = [["platinum","Platinum"],["gold","Gold"],["silver","Silver"],["bronze","Bronze"]];
 const listed = SPONSORS.filter(sp => TIERS.some(([t]) => t === sp.tier));
 const logoCard = sp => {
-  const inner = sp.logo ? `<img src="${esc(sp.logo)}" alt="${esc(sp.name)}">` : `<span class="wordmark">${esc(sp.name)}</span>`;
+  const inner = (sp.logo ? `<img src="${esc(sp.logo)}" alt="${esc(sp.name)}">` : `<span class="wordmark">${esc(sp.name)}</span>`)
+    + (sp.note ? `<span class="sp-note">${esc(sp.note)}</span>` : "");
   return sp.url ? `<a class="logo-card" href="${esc(sp.url)}" target="_blank" rel="noopener">${inner}</a>` : `<div class="logo-card">${inner}</div>`;
 };
 const openCard = name => `<a class="logo-card open" href="#packages"><span>Your logo here</span><small>Become a ${name} sponsor →</small></a>`;
