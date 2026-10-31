@@ -178,14 +178,14 @@ function owl(label){
   </g></svg>`;
 }
 
-/* ===== Header and footer (one menu for every page) ===== */
-const MENU = [["fellowship","fellowship.html","Fellowship"],["tracks","tracks.html","Tracks"],["agenda","agenda.html","Agenda"],["speakers","speakers.html","Speakers"],["sponsors","sponsors.html","Sponsors"],["faq","faq.html","FAQ"]];
+/* ===== Header and footer (one menu for every page). A 4th value of "soon" shows the item grayed out and unclickable. ===== */
+const MENU = [["fellowship","fellowship.html","Fellowship"],["tracks","tracks.html","Tracks"],["agenda","agenda.html","Agenda","soon"],["speakers","speakers.html","Speakers"],["sponsors","sponsors.html","Sponsors"],["faq","faq.html","FAQ"]];
 const headerEl = $("siteHeader");
 if (headerEl) headerEl.innerHTML = `<div class="wrap">
   <a class="mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span><b>WISECEO<sup class="reg" aria-hidden="true">®</sup></b><small>ACADEMY</small></span></a>
   <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
   <nav class="nav" id="mainNav" aria-label="Main">
-    ${MENU.map(([id,href,label]) => `<a href="${href}"${id===PAGE ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
+    ${MENU.map(([id,href,label,soon]) => soon ? `<span class="nav-soon" aria-disabled="true" title="Coming soon">${label}<small>Soon</small></span>` : `<a href="${href}"${id===PAGE ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
     <a class="btn btn-grad" href="apply.html"${PAGE==="apply" ? ' aria-current="page"' : ""}>Apply</a>
   </nav></div>`;
 const menuBtn = $("menuBtn");
