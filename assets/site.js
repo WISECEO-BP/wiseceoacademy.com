@@ -21,6 +21,7 @@ const SPONSORS = [
   /* { name:"Google for Nonprofits", tier:"", logo:"" }, */
   /* { name:"Candid", tier:"", logo:"" }, */
   /* { name:"Amazon Future Engineer", tier:"", logo:"" }, */
+  { name:"Anthropic", tier:"supporter", logo:"" },
   { name:"Google", tier:"supporter", logo:"" },
   { name:"GitHub", tier:"supporter", logo:"" },
   { name:"Figma", tier:"supporter", logo:"" },
