@@ -240,12 +240,21 @@ function speakerCard(s){
     ${s.date ? `<span class="label">${esc(fmtDate(s.date))} · ${esc(s.time)} ET</span>` : ""}
   </article>`;
 }
+/* Speaker categories shown until confirmed speakers are added. Each category has several guests, virtual and in person. */
+const SPEAKER_CATEGORIES = [
+  { name:"Cybersecurity", color:"--cyber", guests:"Security analysts, IT leaders, and compliance professionals" },
+  { name:"Energy & Infrastructure", color:"--energy", guests:"Utility engineers, data center technicians, and skilled trades leaders" },
+  { name:"AI & Technical Integration", color:"--ai", guests:"AI builders, software engineers, and product teams" },
+  { name:"Medicine, Healthcare & HealthTech", color:"--health", guests:"Practicing physicians, specialists, nurses, and HealthTech innovators" },
+  { name:"Professional Presence & Career Navigation", color:"--pro", guests:"Corporate brand managers, recruiters, HR leaders, and executives" }
+];
 const tbaCard = t => `<article class="speaker spot tba" style="--c:var(${t.color})">
     <div class="avatar"><span>${owl()}</span></div>
     <span class="chip">${esc(t.name)}</span>
-    <div><b>Speaker announced soon</b><p class="role">A guest from the ${esc(t.name.toLowerCase())} field</p></div>
+    <div><b>Speakers announced soon</b><p class="role">${esc(t.guests)}</p></div>
+    <span class="label">Virtual &amp; in-person sessions</span>
   </article>`;
-const speakersOrTba = list => list.length ? list.map(speakerCard).join("") : TRACKS.map(tbaCard).join("");
+const speakersOrTba = (list, n) => list.length ? list.map(speakerCard).join("") : SPEAKER_CATEGORIES.slice(0, n || SPEAKER_CATEGORIES.length).map(tbaCard).join("");
 
 /* ===== Page sections (each renders only where its container exists) ===== */
 if ($("facts")) $("facts").innerHTML = [
