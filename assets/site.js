@@ -335,8 +335,10 @@ if ($("tierList")) $("tierList").innerHTML = TIERS.map(([t,name]) => {
   </section>` : "");
 if ($("partnersStrip") && (listed.length || supporters.length)){
   $("partnersStrip-h").textContent = `Thank you to our ${listed.length && supporters.length ? "sponsors and platform partners" : listed.length ? "sponsors" : "platform partners"}`;
-  $("partnersGrid").innerHTML = listed.concat(supporters).map(sp =>
+  const cards = listed.concat(supporters).map(sp =>
     `<div class="partner-card">${sp.logo ? `<img src="${esc(sp.logo)}" alt="${esc(sp.name)}">` : `<span class="partner-name">${esc(sp.name)}</span>`}</div>`).join("");
+  /* The second set makes the loop seamless; screen readers skip it */
+  $("partnersGrid").innerHTML = cards + `<div class="marquee-dup" aria-hidden="true">${cards}</div>`;
   $("partnersStrip").hidden = false;
 }
 if ($("compareTable")){

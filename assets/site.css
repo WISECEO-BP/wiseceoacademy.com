@@ -371,15 +371,22 @@ dialog.pop::backdrop{background:rgba(10,15,28,.6);backdrop-filter:blur(4px)}
 .pop-inner .btn{justify-self:start}
 .stat .src{cursor:default}
 
-/* Home page: Thank you to our platform partners */
-.platform-partners-section{padding:60px max(20px,env(safe-area-inset-right,0px)) 60px max(20px,env(safe-area-inset-left,0px));background-color:#f8fafc;color:#0f172a;text-align:center}
-.partners-container{max-width:1200px;margin:0 auto}
-.platform-partners-section h2{font-size:1.75rem;font-weight:700;margin:0 0 40px;letter-spacing:-.02em;color:#0f172a}
-.partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;justify-content:center}
-.partner-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px 16px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.02);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-.partner-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05);border-color:#cbd5e1}
-.partner-card img{max-width:100%;max-height:40px;object-fit:contain}
-.partner-name{font-size:1.1rem;font-weight:600;color:#1e293b}
+/* Home page: Thank you to our platform partners (dark glass, scrolling) */
+.platform-partners-section{position:relative;padding:80px 0;background:rgba(15,23,42,.65);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden;color:#fff;text-align:center}
+.partners-container{max-width:1400px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.platform-partners-section h2{font-size:clamp(1.5rem,3.4vw,2rem);font-weight:700;margin:0 0 50px;letter-spacing:-.02em;color:#f8fafc;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.marquee-wrapper{position:relative;width:100%;overflow:hidden;padding:10px 0 18px;-webkit-mask-image:linear-gradient(to right,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 10%,#000 90%,transparent)}
+.marquee-track{display:flex;gap:30px;width:max-content;animation:scrollMarquee 35s linear infinite}
+.marquee-dup{display:contents}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes scrollMarquee{to{transform:translateX(calc(-50% - 15px))}}
+.partner-card{background:rgba(30,41,59,.45);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:36px 48px;min-width:240px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(0,0,0,.37);transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.partner-card:hover{transform:translateY(-6px) scale(1.03);background:rgba(51,65,85,.6);border-color:rgba(59,130,246,.5);box-shadow:0 12px 40px rgba(59,130,246,.2)}
+.partner-card img{max-width:100%;max-height:44px;object-fit:contain}
+.partner-name{font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+@media (max-width:560px){.partner-card{min-width:180px;padding:28px 32px}.partner-name{font-size:1.25rem}}
+@media (prefers-reduced-motion: reduce){.marquee-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.marquee-dup{display:none}.marquee-wrapper{-webkit-mask-image:none;mask-image:none}}
 .reg{font-size:.42em;font-weight:600;vertical-align:super;line-height:0;margin-left:1px;letter-spacing:0}
 .foot-row .reg{font-size:.55em}
 .tm-note{display:block;margin-top:4px;font-size:.72rem;color:var(--ink-2);font-weight:400}
+.platform-partners-section{background:linear-gradient(180deg,rgba(15,23,42,.94),rgba(17,24,48,.97))}
