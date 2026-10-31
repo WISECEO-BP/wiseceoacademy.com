@@ -173,7 +173,7 @@ function owl(label){
 }
 
 /* ===== Header and footer (one menu for every page) ===== */
-const MENU = [["tracks","tracks.html","Tracks"],["agenda","agenda.html","Agenda"],["speakers","speakers.html","Speakers"],["sponsors","sponsors.html","Sponsors"],["faq","faq.html","FAQ"]];
+const MENU = [["fellowship","fellowship.html","Fellowship"],["tracks","tracks.html","Tracks"],["agenda","agenda.html","Agenda"],["speakers","speakers.html","Speakers"],["sponsors","sponsors.html","Sponsors"],["faq","faq.html","FAQ"]];
 const headerEl = $("siteHeader");
 if (headerEl) headerEl.innerHTML = `<div class="wrap">
   <a class="mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span><b>WISECEO<sup class="reg" aria-hidden="true">®</sup></b><small>ACADEMY</small></span></a>
