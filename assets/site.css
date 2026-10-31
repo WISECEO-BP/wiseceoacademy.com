@@ -321,3 +321,8 @@ footer .wrap.foot{display:grid;gap:0;padding-block:0 40px;border-top:1px solid v
 .sources li:target{color:var(--ink)}
 h2.label{font:500 .74rem/1.3 var(--mono);letter-spacing:.1em}
 @media (min-width:1100px){.stat b{font-size:2.25rem}}
+
+/* "Fellows train with tools from": plain names, not logos, not sponsors */
+.tools-row{display:grid;gap:14px;padding-top:26px;border-top:1px solid var(--rule)}
+.tool-names{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 30px;align-items:baseline}
+.tool-names li{font:600 clamp(1rem,2.2vw,1.3rem)/1.2 var(--display);color:var(--ink-2)}

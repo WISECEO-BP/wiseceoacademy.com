@@ -83,6 +83,10 @@ const TRACKS = [
    Example: { name:"Jordan Lee", role:"SOC Analyst", org:"Example Bank", talk:"A day on the security team", track:"cyber", date:"2026-11-12", time:"4:00 PM", photo:"" } */
 const SPEAKERS = [];
 
+/* Organizations whose courses or credentials fellows prepare for (see CREDENTIALS).
+   Shown as plain names under "Fellows train with tools from". This is not a sponsor list. */
+const TOOL_PROVIDERS = ["Google Cloud","Amazon Web Services","CompTIA","ISC2","CISA","Coursera","University of Helsinki"];
+
 /* level: 1 or 2 · cost: "free" | "low" | "paid" · minAge: number or null */
 const CREDENTIALS = [
   { name:"Elements of AI", provider:"University of Helsinki & MinnaLearn", tracks:["ai"], level:1, time:"~30 hrs", cost:"free", minAge:null },
@@ -268,6 +272,12 @@ document.querySelectorAll("[data-sponsor-form]").forEach(a => {
   if (PARTNER_URL){ a.href = PARTNER_URL; a.target = "_blank"; a.rel = "noopener"; }
   else { a.removeAttribute("href"); a.setAttribute("aria-disabled","true"); a.textContent = "Sponsor form opens soon"; }
 });
+document.querySelectorAll("[data-tools]").forEach(el => {
+  el.innerHTML = `<span class="label">Fellows train with tools from</span>
+    <ul class="tool-names">${TOOL_PROVIDERS.map(n => `<li>${esc(n)}</li>`).join("")}</ul>
+    <p class="fine">Names refer to the courses and credentials fellows prepare for. Listing them does not mean these organizations sponsor or endorse WISECEO Academy.</p>`;
+});
+
 /* Sponsor tiers and packages */
 const TIERS = [["platinum","Platinum"],["gold","Gold"],["silver","Silver"],["bronze","Bronze"]];
 const listed = SPONSORS.filter(sp => TIERS.some(([t]) => t === sp.tier));
