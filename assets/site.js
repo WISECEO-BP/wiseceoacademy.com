@@ -107,7 +107,13 @@ const TRACKS = [
     blurb:"Learn what AI can and cannot do, use it responsibly, and question how it affects people and communities.",
     l1:["How AI Works","Prompt Design","The Human Element"],
     l2:["AI Project Studio","Cloud AI Basics"],
-    leads:"AI-assisted support roles · Data Center Technician" }
+    leads:"AI-assisted support roles · Data Center Technician" },
+  { id:"health", code:"MD", name:"Medicine, Healthcare & HealthTech", color:"--health",
+    icon:'<path d="M12 21s-7-4.4-9.3-9C1.2 8.8 3.1 5 6.7 5c2 0 3.5 1 4.3 2.4h2C13.8 6 15.3 5 17.3 5c3.6 0 5.5 3.8 4 7-2.3 4.6-9.3 9-9.3 9z"/><path d="M7 12h3l1.5-3 2 6 1.5-3h2"/>',
+    blurb:"Meet practicing physicians and specialists, map the road to medical school, and see how software and hardware are changing clinical care.",
+    l1:["Inside Medicine: Mentor Sessions","The Pre-Med Roadmap","Health, Science & Society"],
+    l2:["HealthTech & Medical Innovation","AI in Diagnostic Imaging","Medical Devices & Biomedical Engineering"],
+    leads:"Pre-med and nursing pathways · Health IT · Biomedical engineering" }
 ];
 
 /* Add confirmed speakers only. A speaker with a date also appears on the Agenda page.
@@ -372,7 +378,7 @@ document.addEventListener("pointermove", e => {
   card.style.setProperty("--my", `${e.clientY - r.top}px`);
 }, { passive:true });
 
-/* ===== Network motion: three track lines carrying glowing data packets ===== */
+/* ===== Network motion: one glowing line per track, carrying data packets ===== */
 document.querySelectorAll("canvas.net").forEach(cv => {
   const ctx = cv.getContext("2d");
   let w = 0, h = 0, colors = [], running = true;
@@ -381,7 +387,7 @@ document.querySelectorAll("canvas.net").forEach(cv => {
     colors = TRACKS.map(t => cs.getPropertyValue(t.color).trim()); };
   const size = () => { const dpr = Math.min(devicePixelRatio || 1, 2), r = cv.getBoundingClientRect();
     w = r.width; h = r.height; cv.width = w*dpr; cv.height = h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); };
-  const yAt = (i, x) => h*(0.28 + i*0.22) + Math.sin(x/w*Math.PI*2.2 + i*1.7)*h*0.07;
+  const yAt = (i, x) => h*(0.22 + i*(0.56/Math.max(1,TRACKS.length-1))) + Math.sin(x/w*Math.PI*2.2 + i*1.7)*h*0.07;
   for (let i = 0; i < 3; i++) for (let k = 0; k < 4; k++) packets.push({ line:i, t:Math.random(), v:0.0012 + Math.random()*0.0018 });
   function draw(){
     ctx.clearRect(0,0,w,h);

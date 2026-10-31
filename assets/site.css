@@ -3,7 +3,7 @@
   color-scheme:dark;
   --bg:#0A0F1C; --surface:#10182B; --surface-2:#162038; --ink:#EAF0FB; --ink-2:#9AA8C4; --rule:#25314C;
   --cyan:#22D3EE; --violet:#A78BFA; --pink:#F472B6;
-  --cyber:#60A5FA; --energy:#4ADE80; --ai:#C084FC;
+  --cyber:#60A5FA; --energy:#4ADE80; --ai:#C084FC; --health:#FB7185;
   --on-grad:#0A0F1C;
   --display:'Unbounded','Arial Black',system-ui,sans-serif;
   --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
@@ -16,14 +16,14 @@
     color-scheme:light;
     --bg:#F4F6FB; --surface:#FFFFFF; --surface-2:#EBEFF8; --ink:#0B1324; --ink-2:#4A5672; --rule:#D6DDEA;
     --cyan:#0E7490; --violet:#6D28D9; --pink:#BE185D;
-    --cyber:#1D4ED8; --energy:#15803D; --ai:#7E22CE; --on-grad:#FFFFFF;
+    --cyber:#1D4ED8; --energy:#15803D; --ai:#7E22CE; --health:#BE123C; --on-grad:#FFFFFF;
   }
 }
 :root[data-theme="light"]{
   color-scheme:light;
   --bg:#F4F6FB; --surface:#FFFFFF; --surface-2:#EBEFF8; --ink:#0B1324; --ink-2:#4A5672; --rule:#D6DDEA;
   --cyan:#0E7490; --violet:#6D28D9; --pink:#BE185D;
-  --cyber:#1D4ED8; --energy:#15803D; --ai:#7E22CE; --on-grad:#FFFFFF;
+  --cyber:#1D4ED8; --energy:#15803D; --ai:#7E22CE; --health:#BE123C; --on-grad:#FFFFFF;
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -429,3 +429,7 @@ dialog.pop::backdrop{background:rgba(10,15,28,.6);backdrop-filter:blur(4px)}
 .arm .btn{justify-self:start}
 .arms-band > .wrap{padding-block:40px}
 .tm-note a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media (min-width:900px){.tracks{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1200px){.tracks{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:900px){.teasers{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1200px){.teasers{grid-template-columns:repeat(4,1fr)}}
