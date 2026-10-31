@@ -439,3 +439,6 @@ dialog.pop::backdrop{background:rgba(10,15,28,.6);backdrop-filter:blur(4px)}
   #speakerList > .speaker,#speakerTeasers > .speaker{grid-column:span 2}
   #speakerList > .speaker.tba:nth-child(n+4),#speakerTeasers > .speaker.tba:nth-child(n+4){grid-column:span 3}
 }
+.entry{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:900px){.entry{grid-template-columns:repeat(3,1fr)}}
+.entry .label{color:var(--violet)}
