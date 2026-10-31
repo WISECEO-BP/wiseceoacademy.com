@@ -22,10 +22,10 @@ const SPONSORS = [
   /* { name:"Candid", tier:"", logo:"", url:"https://candid.org/" }, */
   /* { name:"TechOlympics, presented by Procter & Gamble", tier:"", logo:"", url:"https://techolympics.org/" }, */
   /* { name:"Amazon Future Engineer", tier:"", logo:"", url:"https://www.amazonfutureengineer.com/" }, */
-  { name:"GitHub", tier:"supporter", logo:"", url:"https://github.com/", note:"In-kind: free Team plan" },
-  { name:"Figma", tier:"supporter", logo:"", url:"https://www.figma.com/education/", note:"In-kind: free classroom accounts" },
-  { name:"Airtable", tier:"supporter", logo:"", url:"https://www.airtable.com/", note:"In-kind: 50% off software" },
-  { name:"beehiiv", tier:"supporter", logo:"", url:"https://www.beehiiv.com/", note:"In-kind: 20% off software" },
+  { name:"GitHub", tier:"supporter", logo:"", url:"https://github.com/" },
+  { name:"Figma", tier:"supporter", logo:"", url:"https://www.figma.com/education/" },
+  { name:"Airtable", tier:"supporter", logo:"", url:"https://www.airtable.com/" },
+  { name:"beehiiv", tier:"supporter", logo:"", url:"https://www.beehiiv.com/" },
 ];
 
 /* Sponsorship packages shown on the Sponsorship page. price: "" shows "Pricing on request".
@@ -304,7 +304,7 @@ if ($("tierList")) $("tierList").innerHTML = TIERS.map(([t,name]) => {
   </section>`;
 }).join("") + (supporters.length ? `<section class="tier tier-supporter" aria-labelledby="tier-supporter">
     <div class="tier-head"><span class="tier-badge">Supporters</span><h2 id="tier-supporter" class="sr-only">Supporters</h2><span class="tier-rule"></span></div>
-    <p class="fine">Companies whose tools and discounts help us run the program.</p>
+    <p class="fine">Companies whose tools help us run the program.</p>
     <div class="logo-grid">${supporters.map(logoCard).join("")}</div>
   </section>` : "");
 if ($("sponsorStrip") && (listed.length || supporters.length)){
