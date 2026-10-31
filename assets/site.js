@@ -32,13 +32,39 @@ const SPONSORS = [
    DRAFT benefits: review and edit before sharing with sponsors. */
 const PACKAGES = [
   { tier:"platinum", name:"Platinum", price:"", lead:"Name a full track cohort.",
-    perks:["Named sponsor of one track cohort","Largest logo on the Sponsors and Home pages","Host up to three live sessions","First look at fellows finishing Level 2 for internships","Outcome report every cohort","Recognition at orientation"] },
+    about:"The top level for visibility and impact: your name on a full track cohort, the most live sessions, and a presenting spot in every newsletter.",
+    perks:["Named sponsor of one track cohort","Presenting sponsor of every newsletter issue","Host up to three live online sessions","First look at Level 2 fellows for internships","Outcome report every cohort"] },
   { tier:"gold", name:"Gold", price:"", lead:"Fund credential exams for a cohort.",
-    perks:["Exam vouchers named for your company","Large logo on the Sponsors page","Host up to two live sessions","Outcome report every cohort","Recognition at orientation"] },
+    about:"For companies that want fellows to earn credentials in their name, with regular newsletter features and live sessions.",
+    perks:["Exam vouchers named for your company","Two newsletter spotlights per cohort","Host up to two live online sessions","Outcome report every cohort"] },
   { tier:"silver", name:"Silver", price:"", lead:"Equip a group of fellows.",
-    perks:["Devices or vouchers for a group of fellows","Logo on the Sponsors page","Host one live session","Outcome report every cohort"] },
+    about:"Strong visibility with flexibility: equip a group of fellows and meet them in a live session.",
+    perks:["Devices or vouchers for a group of fellows","One newsletter spotlight per cohort","Host one live online session","Outcome report every cohort"] },
   { tier:"bronze", name:"Bronze", price:"", lead:"Back one fellow’s credential.",
-    perks:["One fellow’s credential exam","Logo on the Sponsors page","Outcome report summary"] }
+    about:"A first step for companies that want to support fellows before committing to a larger package.",
+    perks:["One fellow’s credential exam","Logo in every newsletter","Linked logo on the Sponsors page","Outcome report summary"] },
+  { tier:"community", name:"Community", price:"", lead:"Reach families and fellows online.",
+    about:"For companies that want visibility in the newsletter and on the website without funding a fellow directly.",
+    perks:["Name in every newsletter","Share job and internship postings","Name on the Sponsors page"] }
+];
+
+/* Benefit comparison table on the Sponsors page. One value per level, in PACKAGES order.
+   true = included, false = not included, or a short text. DRAFT: review before sharing. */
+const COMPARE = [
+  ["Named sponsor of a track cohort",            [true, false, false, false, false]],
+  ["Live online sessions you host",              ["Up to 3", "Up to 2", "1", false, false]],
+  ["Recognition at online orientation",          [true, true, false, false, false]],
+  ["Exam vouchers named for your company",       [true, true, false, false, false]],
+  ["Presenting sponsor of every newsletter",     [true, false, false, false, false]],
+  ["Newsletter sponsor spotlight",               ["Every issue", "2 per cohort", "1 per cohort", false, false]],
+  ["Logo or name in every newsletter",           ["Logo", "Logo", "Logo", "Logo", "Name"]],
+  ["Logo on wiseceoacademy.com",                 ["Home and Sponsors", "Sponsors page", "Sponsors page", "Sponsors page", "Name only"]],
+  ["Social media thank-you posts per cohort",    ["3", "2", "1", "1", false]],
+  ["Job and internship postings shared with fellows", ["Unlimited", "Up to 4", "Up to 2", "1", "1"]],
+  ["First look at Level 2 fellows for internships", [true, false, false, false, false]],
+  ["Outcome report",                             ["Full", "Full", "Full", "Summary", "Summary"]],
+  ["Dedicated sponsorship contact",              [true, true, true, true, true]],
+  ["First right to renew for the next cohort",   [true, true, true, true, true]]
 ];
 
 /* ===== Social accounts =====
@@ -310,6 +336,13 @@ if ($("tierList")) $("tierList").innerHTML = TIERS.map(([t,name]) => {
 if ($("sponsorStrip") && (listed.length || supporters.length)){
   $("sponsorStrip").innerHTML = `<span class="label">Thank you to our ${listed.length && supporters.length ? "sponsors and supporters" : listed.length ? "sponsors" : "supporters"}</span><div class="strip-logos">${listed.concat(supporters).map(logoCard).join("")}</div>`;
   $("sponsorStrip").hidden = false;
+}
+if ($("compareTable")){
+  const cell = v => v === true ? `<span class="yes" aria-label="Included">✓</span>` : v === false ? `<span class="no" aria-label="Not included">✕</span>` : esc(v);
+  $("compareTable").innerHTML = `<table class="compare">
+    <thead><tr><th scope="col" class="corner"><span class="cmp-title">Benefits</span></th>${PACKAGES.map(pk => `<th scope="col" class="tier-${pk.tier}"><span class="tier-badge">${esc(pk.name)}</span><p class="cmp-about">${esc(pk.about)}</p><p class="pk-price">${pk.price ? esc(pk.price) : "Pricing on request"}</p></th>`).join("")}</tr></thead>
+    <tbody>${COMPARE.map(([label, vals]) => `<tr><th scope="row">${esc(label)}</th>${vals.map(v => `<td>${cell(v)}</td>`).join("")}</tr>`).join("")}</tbody>
+  </table>`;
 }
 if ($("packageList")) $("packageList").innerHTML = PACKAGES.map(pk => `
   <article class="package spot tier-${pk.tier}${pk.tier==="platinum" ? " featured" : ""}">

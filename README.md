@@ -20,7 +20,8 @@ Almost everything lives in `assets/site.js`. Each list there mirrors an Airtable
 - `APPLY_URL`: paste the Airtable application form link. Until then, Apply buttons say "Application opens soon."
 - `PARTNER_URL`: paste the Airtable sponsor interest form link. Until then, sponsor buttons say "Sponsor form opens soon."
 - `SPONSORS`: list a sponsor only after they agree in writing, with their tier. Put approved logo files in `assets/sponsors/`.
-- `PACKAGES`: sponsorship levels, prices, and benefits shown on the Sponsorship page.
+- `PACKAGES`: the five sponsorship levels (Platinum, Gold, Silver, Bronze, Community), prices, and the short benefit list on each card.
+- `COMPARE`: the "Compare all benefits" table on the Sponsors page, one value per level in the same order as `PACKAGES`. All benefits are online: live sessions, the WISECEO Academy newsletter, the website, and social media.
 - `SPEAKERS`: confirmed speakers only. A speaker with a `date` also appears on the Agenda page.
 - `TRACKS` and `CREDENTIALS`: track modules and the credential table.
 - `TOOL_PROVIDERS`: names shown under "Fellows train with tools from" on the Home and Sponsors pages. List only organizations whose courses or credentials fellows prepare for. This is not a sponsor list.
