@@ -83,9 +83,9 @@ const TRACKS = [
    Example: { name:"Jordan Lee", role:"SOC Analyst", org:"Example Bank", talk:"A day on the security team", track:"cyber", date:"2026-11-12", time:"4:00 PM", photo:"" } */
 const SPEAKERS = [];
 
-/* Organizations whose courses or credentials fellows prepare for (see CREDENTIALS).
+/* Organizations whose tools, courses, or credentials fellows use or prepare for (see CREDENTIALS; Figma is used for design projects).
    Shown as plain names under "Fellows train with tools from". This is not a sponsor list. */
-const TOOL_PROVIDERS = ["Microsoft","Google Cloud","Amazon Web Services","CompTIA","ISC2","CISA","Coursera","University of Helsinki"];
+const TOOL_PROVIDERS = ["Microsoft","Google Cloud","Amazon Web Services","Figma","CompTIA","ISC2","CISA","Coursera","University of Helsinki"];
 
 /* level: 1 or 2 · cost: "free" | "low" | "paid" · minAge: number or null */
 const CREDENTIALS = [
@@ -278,7 +278,7 @@ document.querySelectorAll("[data-sponsor-form]").forEach(a => {
 document.querySelectorAll("[data-tools]").forEach(el => {
   el.innerHTML = `<span class="label">Fellows train with tools from</span>
     <ul class="tool-names">${TOOL_PROVIDERS.map(n => `<li>${esc(n)}</li>`).join("")}</ul>
-    <p class="fine">Names refer to the courses and credentials fellows prepare for. Listing them does not mean these organizations sponsor or endorse WISECEO Academy.</p>`;
+    <p class="fine">Names refer to the tools fellows use and the credentials they prepare for. Listing them does not mean these organizations sponsor or endorse WISECEO Academy.</p>`;
 });
 
 /* Sponsor tiers and packages */
