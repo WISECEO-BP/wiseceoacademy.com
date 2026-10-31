@@ -333,9 +333,11 @@ if ($("tierList")) $("tierList").innerHTML = TIERS.map(([t,name]) => {
     <div class="tier-head"><span class="tier-badge">Platform Partners</span><h2 id="tier-supporter" class="sr-only">Platform Partners</h2><span class="tier-rule"></span></div>
     <div class="logo-grid">${supporters.map(logoCard).join("")}</div>
   </section>` : "");
-if ($("sponsorStrip") && (listed.length || supporters.length)){
-  $("sponsorStrip").innerHTML = `<span class="label">Thank you to our ${listed.length && supporters.length ? "sponsors and partners" : listed.length ? "sponsors" : "platform partners"}</span><div class="strip-logos">${listed.concat(supporters).map(logoCard).join("")}</div>`;
-  $("sponsorStrip").hidden = false;
+if ($("partnersStrip") && (listed.length || supporters.length)){
+  $("partnersStrip-h").textContent = `Thank you to our ${listed.length && supporters.length ? "sponsors and platform partners" : listed.length ? "sponsors" : "platform partners"}`;
+  $("partnersGrid").innerHTML = listed.concat(supporters).map(sp =>
+    `<div class="partner-card">${sp.logo ? `<img src="${esc(sp.logo)}" alt="${esc(sp.name)}">` : `<span class="partner-name">${esc(sp.name)}</span>`}</div>`).join("");
+  $("partnersStrip").hidden = false;
 }
 if ($("compareTable")){
   const cell = v => v === true ? `<span class="yes" aria-label="Included">✓</span>` : v === false ? `<span class="no" aria-label="Not included">✕</span>` : esc(v);
