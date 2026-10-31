@@ -210,6 +210,17 @@ if (foot) foot.innerHTML = `<div class="wrap foot">
   }).join("")}</ul>
 </div>`;
 
+/* Big Opa in the top section of every inner page, with a page-specific speech bubble */
+const OPA_SAYS = { fellowship:"1 to 3 years. Join in any grade! 🎓", tracks:"Four tracks. Which one is yours? 👋", agenda:"Sessions are coming soon! 📅",
+  speakers:"Meet the people who do the work 🎤", sponsors:"Thank you for backing our fellows! 💜", faq:"Ask me anything! 🦉", apply:"You’ve got this! ✍️", "404":"Let’s get you back on track 🧭" };
+document.querySelectorAll(".page-hero > .wrap").forEach(wrap => {
+  if (wrap.querySelector(".hero-owl")) return;
+  const copy = document.createElement("div"); copy.className = "page-hero-copy";
+  while (wrap.firstChild) copy.appendChild(wrap.firstChild);
+  wrap.appendChild(copy);
+  wrap.insertAdjacentHTML("beforeend", `<div class="hero-owl page-owl">${owl()}<span class="bubble" aria-hidden="true">${OPA_SAYS[PAGE] || "Hi, I’m Opa! 👋"}</span></div>`);
+  wrap.classList.add("has-owl");
+});
 document.querySelectorAll("[data-owl]").forEach(el => { el.outerHTML = owl(el.dataset.owl || ""); });
 
 /* Hero owl's eyes follow the pointer */

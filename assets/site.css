@@ -445,3 +445,14 @@ dialog.pop::backdrop{background:rgba(10,15,28,.6);backdrop-filter:blur(4px)}
 .nav-soon{display:inline-flex;align-items:center;gap:6px;color:var(--ink-2);opacity:.55;cursor:default;font-weight:600}
 .nav-soon small{font:500 .62rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border:1px solid var(--rule);border-radius:999px}
 @media (max-width:820px){.nav-soon{padding:12px 4px;border-bottom:1px solid var(--rule);font-size:1rem}}
+
+/* Inner page headers: copy on the left, big Opa on the right */
+.page-hero-copy{display:grid;gap:16px;min-width:0}
+.page-hero .wrap.has-owl{display:grid;gap:24px;align-items:center}
+.page-owl{justify-self:center;width:min(220px,58vw)}
+@media (min-width:900px){
+  .page-hero .wrap.has-owl{grid-template-columns:1.5fr 1fr}
+  .page-owl{width:min(280px,100%)}
+}
+@media (max-width:899px){.page-owl .bubble{right:-2%;top:-4%}}
+.page-owl{padding-top:52px}.page-owl .bubble{top:0;right:auto;left:50%;transform:translateX(-30%);white-space:nowrap}@media (max-width:899px){.page-owl .bubble{top:0;right:auto;white-space:normal;width:max-content;max-width:78vw}}
