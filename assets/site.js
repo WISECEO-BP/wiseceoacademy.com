@@ -192,7 +192,7 @@ const foot = $("foot");
 if (foot) foot.innerHTML = `<div class="wrap foot">
   <a class="foot-mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span>WISECEO<sup class="reg" aria-hidden="true">®</sup> <span class="grad-text">ACADEMY</span></span></a>
   <div class="foot-row">
-    <span>© ${new Date().getFullYear()} WISECEO<sup class="reg">®</sup> Academy<small class="tm-note">WISECEO is a registered trademark of Tiffany Davidson, U.S. Reg. No. 6,954,676.</small></span>
+    <span>© ${new Date().getFullYear()} WISECEO<sup class="reg">®</sup> Academy<small class="tm-note">WISECEO is a registered trademark, U.S. Reg. No. 6,954,676.</small></span>
     <a href="sponsors.html">Sponsorship</a>
     <a href="apply.html">Apply</a>
   </div>
