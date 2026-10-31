@@ -11,7 +11,7 @@ const APPLY_URL = "";
 const PARTNER_URL = "";
 /* ===== Sponsors =====
    List a sponsor only after they have agreed in writing to be named, at a tier they chose.
-   tier: "platinum" | "gold" | "silver" | "bronze"
+   tier: "platinum" | "gold" | "silver" | "bronze" for paid sponsors, or "supporter" for in-kind help (tools, discounts)
    logo: path to an approved logo file in assets/sponsors/ (for example "assets/sponsors/acme.svg"),
          or "" to show the name as text until the logo arrives.
    url: the sponsor's website, or "".
@@ -22,9 +22,10 @@ const SPONSORS = [
   /* { name:"Candid", tier:"", logo:"", url:"https://candid.org/" }, */
   /* { name:"TechOlympics, presented by Procter & Gamble", tier:"", logo:"", url:"https://techolympics.org/" }, */
   /* { name:"Amazon Future Engineer", tier:"", logo:"", url:"https://www.amazonfutureengineer.com/" }, */
-  { name:"Figma", tier:"bronze", logo:"", url:"https://www.figma.com/education/", note:"In-kind: free classroom accounts" },
-  { name:"Airtable", tier:"bronze", logo:"", url:"https://www.airtable.com/", note:"In-kind: 50% off software" },
-  { name:"beehiiv", tier:"bronze", logo:"", url:"https://www.beehiiv.com/", note:"In-kind: 20% off software" },
+  { name:"GitHub", tier:"supporter", logo:"", url:"https://github.com/", note:"In-kind: free Team plan" },
+  { name:"Figma", tier:"supporter", logo:"", url:"https://www.figma.com/education/", note:"In-kind: free classroom accounts" },
+  { name:"Airtable", tier:"supporter", logo:"", url:"https://www.airtable.com/", note:"In-kind: 50% off software" },
+  { name:"beehiiv", tier:"supporter", logo:"", url:"https://www.beehiiv.com/", note:"In-kind: 20% off software" },
 ];
 
 /* Sponsorship packages shown on the Sponsorship page. price: "" shows "Pricing on request".
@@ -288,6 +289,7 @@ document.querySelectorAll("[data-tools]").forEach(el => {
 /* Sponsor tiers and packages */
 const TIERS = [["platinum","Platinum"],["gold","Gold"],["silver","Silver"],["bronze","Bronze"]];
 const listed = SPONSORS.filter(sp => TIERS.some(([t]) => t === sp.tier));
+const supporters = SPONSORS.filter(sp => sp.tier === "supporter");
 const logoCard = sp => {
   const inner = (sp.logo ? `<img src="${esc(sp.logo)}" alt="${esc(sp.name)}">` : `<span class="wordmark">${esc(sp.name)}</span>`)
     + (sp.note ? `<span class="sp-note">${esc(sp.note)}</span>` : "");
@@ -300,9 +302,13 @@ if ($("tierList")) $("tierList").innerHTML = TIERS.map(([t,name]) => {
     <div class="tier-head"><span class="tier-badge">${name}</span><h2 id="tier-${t}" class="sr-only">${name} sponsors</h2><span class="tier-rule"></span></div>
     <div class="logo-grid">${list.length ? list.map(logoCard).join("") : openCard(name)}</div>
   </section>`;
-}).join("");
-if ($("sponsorStrip") && listed.length){
-  $("sponsorStrip").innerHTML = `<span class="label">Thank you to our sponsors</span><div class="strip-logos">${listed.map(logoCard).join("")}</div>`;
+}).join("") + (supporters.length ? `<section class="tier tier-supporter" aria-labelledby="tier-supporter">
+    <div class="tier-head"><span class="tier-badge">Supporters</span><h2 id="tier-supporter" class="sr-only">Supporters</h2><span class="tier-rule"></span></div>
+    <p class="fine">Companies whose tools and discounts help us run the program.</p>
+    <div class="logo-grid">${supporters.map(logoCard).join("")}</div>
+  </section>` : "");
+if ($("sponsorStrip") && (listed.length || supporters.length)){
+  $("sponsorStrip").innerHTML = `<span class="label">Thank you to our ${listed.length && supporters.length ? "sponsors and supporters" : listed.length ? "sponsors" : "supporters"}</span><div class="strip-logos">${listed.concat(supporters).map(logoCard).join("")}</div>`;
   $("sponsorStrip").hidden = false;
 }
 if ($("packageList")) $("packageList").innerHTML = PACKAGES.map(pk => `
