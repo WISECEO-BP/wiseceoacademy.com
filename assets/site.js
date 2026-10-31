@@ -20,8 +20,8 @@ const PARTNER_URL = "";
 const SPONSORS = [
   /* { name:"Google for Nonprofits", tier:"", logo:"", url:"https://www.google.com/nonprofits/" }, */
   /* { name:"Candid", tier:"", logo:"", url:"https://candid.org/" }, */
-  /* { name:"TechOlympics, presented by Procter & Gamble", tier:"", logo:"", url:"https://techolympics.org/" }, */
   /* { name:"Amazon Future Engineer", tier:"", logo:"", url:"https://www.amazonfutureengineer.com/" }, */
+  { name:"TechOlympics", tier:"supporter", logo:"", url:"https://techolympics.org/" },
   { name:"GitHub", tier:"supporter", logo:"", url:"https://github.com/" },
   { name:"Figma", tier:"supporter", logo:"", url:"https://www.figma.com/education/" },
   { name:"Airtable", tier:"supporter", logo:"", url:"https://www.airtable.com/" },
