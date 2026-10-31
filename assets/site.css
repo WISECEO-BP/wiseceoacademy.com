@@ -416,3 +416,16 @@ dialog.pop::backdrop{background:rgba(10,15,28,.6);backdrop-filter:blur(4px)}
 @media (min-width:1100px){.ways-4{grid-template-columns:repeat(4,1fr)}}
 .seq.arc b{padding-right:3.6rem}
 @media (min-width:1100px){.tier-top{grid-column:auto}}
+
+/* Two separate arms */
+.arms{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:800px){.arms{grid-template-columns:1fr 1fr}}
+.arm{padding:24px 22px;border-radius:18px;border:1px solid var(--rule);display:grid;gap:10px;align-content:start}
+.arm h2{font-size:1.5rem}
+.arm p{margin:0;color:var(--ink-2)}
+.arm b{color:var(--ink)}
+.arm-here{background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--grad) border-box;border:2px solid transparent}
+.arm-other{background:var(--bg)}
+.arm .btn{justify-self:start}
+.arms-band > .wrap{padding-block:40px}
+.tm-note a{color:inherit;text-decoration:underline;text-underline-offset:3px}

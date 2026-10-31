@@ -17,7 +17,13 @@ Site for the WISECEO Academy fellowship: an industry-backed, no-cost career fell
 The labor statistics on `sponsors.html` come from the BLS Occupational Outlook Handbook (pay from May 2023, projections for 2023–2033). When BLS publishes a newer edition, update the numbers on the page and the dates in the "About this data" pop-up.
 
 ## Site rule: keep visitors here
-Never link to other websites. Show outside information (sources, partner details) in an on-page pop-up instead: add a `<dialog class="pop">` and a button with `data-open` set to its id. The only links that leave the site are WISECEO Academy's own social accounts and its own Airtable forms.
+Never link to other websites. Show outside information (sources, partner details) in an on-page pop-up instead: add a `<dialog class="pop">` and a button with `data-open` set to its id. The only links that leave the site are WISECEO Academy's own social accounts, its own Airtable forms, and the separate nonprofit's site (wiseceo.org), which is always labeled as a separate organization.
+
+## Two separate arms
+WISECEO Academy (this site) is a for-profit training company. W.I.S.E.C.E.O. (wiseceo.org) is a separate nonprofit. Never use donation or tax-deductible wording here; academy funding is sponsorship. Charitable giving goes to wiseceo.org.
+
+## Current stage
+Building the program first. Workforce funding applications (Ohio ETPL, workforce board contracts) come after the program is running.
 
 ## Editing content
 Almost everything lives in `assets/site.js`. Each list there mirrors an Airtable table.
