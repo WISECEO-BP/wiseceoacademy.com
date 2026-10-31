@@ -85,7 +85,7 @@ const SPEAKERS = [];
 
 /* Organizations whose courses or credentials fellows prepare for (see CREDENTIALS).
    Shown as plain names under "Fellows train with tools from". This is not a sponsor list. */
-const TOOL_PROVIDERS = ["Google Cloud","Amazon Web Services","CompTIA","ISC2","CISA","Coursera","University of Helsinki"];
+const TOOL_PROVIDERS = ["Microsoft","Google Cloud","Amazon Web Services","CompTIA","ISC2","CISA","Coursera","University of Helsinki"];
 
 /* level: 1 or 2 · cost: "free" | "low" | "paid" · minAge: number or null */
 const CREDENTIALS = [
@@ -96,7 +96,10 @@ const CREDENTIALS = [
   { name:"Certified in Cybersecurity (CC)", provider:"ISC2", tracks:["cyber","energy"], level:2, time:"Self-paced", cost:"paid", minAge:16 },
   { name:"CompTIA Tech+", provider:"CompTIA", tracks:["cyber"], level:2, time:"Self-paced", cost:"paid", minAge:null },
   { name:"CompTIA Security+", provider:"CompTIA", tracks:["cyber"], level:2, time:"Self-paced", cost:"paid", minAge:null },
-  { name:"AWS Certified AI Practitioner", provider:"Amazon Web Services", tracks:["ai"], level:2, time:"Self-paced", cost:"paid", minAge:null }
+  { name:"AWS Certified AI Practitioner", provider:"Amazon Web Services", tracks:["ai"], level:2, time:"Self-paced", cost:"paid", minAge:null },
+  { name:"Azure Fundamentals (AZ-900)", provider:"Microsoft", tracks:["energy","ai"], level:2, time:"Self-paced", cost:"paid", minAge:null },
+  { name:"Azure AI Fundamentals (AI-900)", provider:"Microsoft", tracks:["ai"], level:2, time:"Self-paced", cost:"paid", minAge:null },
+  { name:"Security, Compliance, and Identity Fundamentals (SC-900)", provider:"Microsoft", tracks:["cyber"], level:2, time:"Self-paced", cost:"paid", minAge:null }
 ];
 
 /* ===================================================================== */
