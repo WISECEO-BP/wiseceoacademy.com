@@ -14,6 +14,7 @@ After importing, click each field name → **Edit field** and set the type:
 - Grade: Single select (9, 10, 11, 12)
 - Track interest: Single select (Cybersecurity, Energy & Infrastructure, AI & Technical Integration, Not sure yet)
 - Parent or guardian knows about this application: Checkbox
+- Agreed to terms: Checkbox. This is the record that the family agreed to the terms and policies at wiseceo.org/legal.
 - Status: Single select (New, Accepted, Waitlisted, Enrolled, Withdrawn)
 - Add a field **Submitted**: Created time
 
@@ -38,6 +39,9 @@ After importing, click each field name → **Edit field** and set the type:
 
 ## 3. Make the two forms
 1. Open **Applications** → **Create a form view**. Hide Status, Notes, and Submitted. Make the student name, student email, grade, parent or guardian name and email, and the "knows about this application" checkbox required.
+   - Drag **Agreed to terms** to the bottom of the form, right above the Submit button, and turn on **Required**. Airtable won't accept the form until it's checked, and a checkbox on an Airtable form always starts unchecked.
+   - Click the field's label on the form and change it to: `By registering, you agree to the terms and policies set forth at wiseceo.org/legal.` In the field's help text, add the full link: https://wiseceo.org/legal
+   - Every registration form, now or later, gets this same required field.
 2. Open **Partner Inquiries** → **Create a form view**. Hide Status, Notes, and Submitted.
 3. On each form, click **Share form** and copy the link.
 
