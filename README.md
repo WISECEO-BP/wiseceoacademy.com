@@ -19,6 +19,9 @@ The labor statistics on `sponsors.html` come from the BLS Occupational Outlook H
 ## Site rule: keep visitors here
 Never link to other websites. Show outside information (sources, partner details) in an on-page pop-up instead: add a `<dialog class="pop">` and a button with `data-open` set to its id. The only links that leave the site are WISECEO Academy's own social accounts, its own Airtable forms, and the separate nonprofit's site (wiseceo.org), which is always labeled as a separate organization.
 
+## Legal terms
+Every page's footer links to the master terms and IP policies at wiseceo.org/legal (set in `assets/site.js`). Every form where a family or student registers must end with a required, unchecked-by-default checkbox: "By registering, you agree to the terms and policies set forth at wiseceo.org/legal." The forms are Airtable forms, so this is set up in Airtable; see `airtable/README.md`.
+
 ## Two separate arms
 WISECEO Academy (this site) is a for-profit training company. W.I.S.E.C.E.O. (wiseceo.org) is a separate nonprofit. Never use donation or tax-deductible wording here; academy funding is sponsorship. Charitable giving goes to wiseceo.org.
 
