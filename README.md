@@ -9,6 +9,7 @@ Site for the WISECEO Academy fellowship: an industry-backed, no-cost career fell
 - `speakers.html`: speakers and the call for speakers
 - `sponsors.html`: everything for sponsors in one page: labor market data, why sponsor, sponsorship levels, the outcome report, sponsor logos by tier
 - `sponsorship.html`, `partners.html`: forward to `sponsors.html` so old links keep working
+- `disclaimer.html`: forwards wiseceoacademy.com/disclaimer to wiseceo.org/legal
 
 - `faq.html`: questions families ask
 - `apply.html`: application checklist and button

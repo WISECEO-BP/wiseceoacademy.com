@@ -20,6 +20,7 @@ After importing, click each field name → **Edit field** and set the type:
 
 **Partner Inquiries** (filled by the partner form)
 - Email: Email · Phone: Phone number
+- Agreed to terms: Checkbox
 - Ways to partner: Multiple select (Sponsor a cohort, Fund exam vouchers, Host a live session, Open a first job)
 - Track interest: Multiple select (the three tracks)
 - Status: Single select (New, In conversation, Committed, Declined)
@@ -42,7 +43,7 @@ After importing, click each field name → **Edit field** and set the type:
    - Drag **Agreed to terms** to the bottom of the form, right above the Submit button, and turn on **Required**. Airtable won't accept the form until it's checked, and a checkbox on an Airtable form always starts unchecked.
    - Click the field's label on the form and change it to: `By registering, you agree to the terms and policies set forth at wiseceo.org/legal.` In the field's help text, add the full link: https://wiseceo.org/legal
    - Every registration form, now or later, gets this same required field.
-2. Open **Partner Inquiries** → **Create a form view**. Hide Status, Notes, and Submitted.
+2. Open **Partner Inquiries** → **Create a form view**. Hide Status, Notes, and Submitted. Set up **Agreed to terms** the same way as on the application form: required, right above Submit, with the same label.
 3. On each form, click **Share form** and copy the link.
 
 ## 4. Turn on the buttons on the site
