@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=20261108200000">
+<link rel="stylesheet" href="assets/site.css?v=20261121140447">
 </head>
 <body data-page="sponsors">
 <a class="skip" href="#main">Skip to content</a>
@@ -48,7 +48,7 @@
       <div class="sec-head">
         <p class="label">Why now</p>
         <h2 id="gap-h">The talent gap is <span class="grad-text">already here</span></h2>
-        <p class="lede">U.S. Bureau of Labor Statistics projections for 2023 to 2033. The average for all occupations is 4% growth.</p>
+        <p class="lede">U.S. Bureau of Labor Statistics ten-year projections. The average for all occupations is 4% growth. Updated November 21, 2026.</p>
         <button class="data-btn" type="button" data-open="dataInfo">About this data</button>
       </div>
       <div class="stats">
@@ -65,7 +65,7 @@
       <div class="sec-head">
         <p class="label">Jobs worth training for</p>
         <h2 id="pay-h">Where our tracks lead</h2>
-        <p class="lede">Median yearly pay, May 2023, and projected job growth from 2023 to 2033.</p>
+        <p class="lede">Median yearly pay and projected ten-year job growth. Updated November 21, 2026.</p>
       </div>
       <div class="ledger"><table>
         <thead><tr><th scope="col">Occupation</th><th scope="col">Track</th><th scope="col">Median pay</th><th scope="col">Growth</th></tr></thead>
@@ -77,8 +77,53 @@
           <tr><td class="cred-name">Computer and IT occupations, all</td><td><span class="dots"><span class="dot" style="--c:var(--cyber)"></span><span class="dot" style="--c:var(--ai)"></span><span class="label">CY · AI</span></span></td><td class="num">$104,420</td><td class="num">356,700 openings/yr</td></tr>
         </tbody>
       </table></div>
+      <div class="sec-head" style="margin-top:56px">
+        <p class="label">The full career ladder</p>
+        <h3 id="ladder-h">Pay at one cybersecurity company</h3>
+        <p class="lede">Posted base pay from HackerOne job listings, with estimated total pay. Our fellows build the technical skills and the executive readiness for every rung. Updated November 21, 2026.</p>
+        <button class="data-btn" type="button" data-open="ladderInfo">Bonus, equity, and notes</button>
+      </div>
+      <div class="ledger"><table aria-labelledby="ladder-h">
+        <thead><tr><th scope="col">Role</th><th scope="col">Path</th><th scope="col">Posted base</th><th scope="col">Est. total pay</th></tr></thead>
+        <tbody>
+          <tr><td class="cred-name">SVP, Deputy General Counsel <span class="cred-prov">(Legal · Executive)</span></td><td><span class="dots"><span class="dot" style="--c:#94a3b8"></span><span class="label">LEAD</span></span></td><td class="num">$300K – $385K</td><td class="num">$470K – $705K</td></tr>
+          <tr><td class="cred-name">Staff Software Engineer, Applied AI <span class="cred-prov">(Engineering)</span></td><td><span class="dots"><span class="dot" style="--c:var(--ai)"></span><span class="label">AI</span></span></td><td class="num">$200K – $256K</td><td class="num">$300K – $435K</td></tr>
+          <tr><td class="cred-name">Director, Total Rewards, Systems &amp; Analytics <span class="cred-prov">(People)</span></td><td><span class="dots"><span class="dot" style="--c:#94a3b8"></span><span class="label">LEAD</span></span></td><td class="num">$223K – $272K</td><td class="num">$285K – $410K</td></tr>
+          <tr><td class="cred-name">Senior Counsel, Employment &amp; Compliance <span class="cred-prov">(Legal)</span></td><td><span class="dots"><span class="dot" style="--c:#94a3b8"></span><span class="label">LEAD</span></span></td><td class="num">$202K – $275K</td><td class="num">$260K – $400K</td></tr>
+          <tr><td class="cred-name">Senior Security Engineer, Identity &amp; Access <span class="cred-prov">(Enterprise Data &amp; AI)</span></td><td><span class="dots"><span class="dot" style="--c:var(--cyber)"></span><span class="label">CY</span></span></td><td class="num">$180K – $220K</td><td class="num">$235K – $315K</td></tr>
+          <tr><td class="cred-name">Business Operations Director <span class="cred-prov">(Office of the CEO)</span></td><td><span class="dots"><span class="dot" style="--c:#94a3b8"></span><span class="label">LEAD</span></span></td><td class="num">$185K – $235K*</td><td class="num">$255K – $360K</td></tr>
+          <tr><td class="cred-name">Account Executive <span class="cred-prov">(Revenue)</span></td><td><span class="dots"><span class="dot" style="--c:#94a3b8"></span><span class="label">LEAD</span></span></td><td class="num">$85K – $150K</td><td class="num">$190K – $345K</td></tr>
+          <tr><td class="cred-name">Strategic Customer Success Manager <span class="cred-prov">(Revenue)</span></td><td><span class="dots"><span class="dot" style="--c:#94a3b8"></span><span class="label">LEAD</span></span></td><td class="num">$141K – $173K</td><td class="num">$182K – $256K</td></tr>
+        </tbody>
+      </table></div>
     </div>
   </section>
+
+  <dialog class="pop" id="ladderInfo" aria-labelledby="ladderInfo-h">
+    <div class="pop-inner">
+      <h2 id="ladderInfo-h">Bonus, equity, and notes</h2>
+      <div class="ledger"><table>
+        <thead><tr><th scope="col">Role</th><th scope="col">Bonus or commission</th><th scope="col">Equity per year (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>SVP, Deputy General Counsel</td><td>15–25% bonus ($45K – $96K)</td><td class="num">$125K – $225K</td></tr>
+          <tr><td>Staff Software Engineer, Applied AI</td><td>Usually none (equity-heavy)</td><td class="num">$100K – $180K</td></tr>
+          <tr><td>Director, Total Rewards</td><td>About 10–15%, if eligible</td><td class="num">$60K – $110K</td></tr>
+          <tr><td>Senior Counsel, Employment</td><td>About 10–15%, if eligible</td><td class="num">$55K – $100K</td></tr>
+          <tr><td>Senior Security Engineer, Identity &amp; Access</td><td>Usually none (equity-heavy)</td><td class="num">$55K – $95K</td></tr>
+          <tr><td>Business Operations Director</td><td>10–15% bonus ($18K – $35K)</td><td class="num">$50K – $90K</td></tr>
+          <tr><td>Account Executive</td><td>50/50 commission ($85K – $150K at full quota)</td><td class="num">$20K – $45K</td></tr>
+          <tr><td>Strategic Customer Success Manager</td><td>15–25% variable ($21K – $43K)</td><td class="num">$20K – $40K</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><b>Posted base:</b> the salary range in HackerOne job listings.</li>
+        <li><b>*</b> The Business Operations Director range was not listed; it is a market estimate.</li>
+        <li><b>Bonus, equity, and total pay:</b> estimates, not figures published by HackerOne. Sales roles show on-target earnings at 100% of quota.</li>
+        <li><b>Path:</b> AI and CY match our tracks. LEAD marks business, legal, and leadership roles our executive readiness strand prepares for.</li>
+      </ul>
+      <button class="btn btn-grad" type="button" data-close>Close</button>
+    </div>
+  </dialog>
 
   <dialog class="pop" id="dataInfo" aria-labelledby="dataInfo-h">
     <div class="pop-inner">
@@ -211,6 +256,6 @@
 
 </main>
 <footer id="foot"></footer>
-<script src="assets/site.js?v=20261108200000"></script>
+<script src="assets/site.js?v=20261121140447"></script>
 </body>
 </html>
