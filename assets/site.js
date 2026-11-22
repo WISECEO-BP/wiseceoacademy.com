@@ -179,7 +179,7 @@ function owl(label){
 }
 
 /* ===== Header and footer (one menu for every page). A 4th value of "soon" shows the item grayed out and unclickable. ===== */
-const MENU = [["fellowship","fellowship.html","Fellowship"],["tracks","tracks.html","Tracks"],["agenda","agenda.html","Agenda","soon"],["speakers","speakers.html","Speakers"],["sponsors","sponsors.html","Sponsors"],["faq","faq.html","FAQ"]];
+const MENU = [["fellowship","fellowship.html","Fellowship"],["tracks","tracks.html","Tracks"],["agenda","agenda.html","Agenda","soon"],["speakers","speakers.html","Speakers"],["sponsors","sponsors.html","Sponsors"],["faq","faq.html","FAQ"],["blog","blog.html","Blog"]];
 const headerEl = $("siteHeader");
 if (headerEl) headerEl.innerHTML = `<div class="wrap">
   <a class="mark" href="index.html" aria-label="WISECEO Academy home">${owl()}<span><b>WISECEO<sup class="reg" aria-hidden="true">®</sup></b><small>ACADEMY</small></span></a>
@@ -212,7 +212,7 @@ if (foot) foot.innerHTML = `<div class="wrap foot">
 
 /* Big Opa in the top section of every inner page, with a page-specific speech bubble */
 const OPA_SAYS = { fellowship:"1 to 3 years. Join in any grade! 🎓", tracks:"Four tracks. Which one is yours? 👋", agenda:"Sessions are coming soon! 📅",
-  speakers:"Meet the people who do the work 🎤", sponsors:"Thank you for backing our fellows! 💜", faq:"Ask me anything! 🦉", apply:"You’ve got this! ✍️", "404":"Let’s get you back on track 🧭" };
+  speakers:"Meet the people who do the work 🎤", sponsors:"Thank you for backing our fellows! 💜", faq:"Ask me anything! 🦉", blog:"Grab a seat and read with me 📚", apply:"You’ve got this! ✍️", "404":"Let’s get you back on track 🧭" };
 document.querySelectorAll(".page-hero > .wrap").forEach(wrap => {
   if (wrap.querySelector(".hero-owl")) return;
   const copy = document.createElement("div"); copy.className = "page-hero-copy";

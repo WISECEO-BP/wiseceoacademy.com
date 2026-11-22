@@ -12,6 +12,7 @@ Site for the WISECEO Academy fellowship: an industry-backed, no-cost career fell
 - `disclaimer.html`: forwards wiseceoacademy.com/disclaimer to wiseceo.org/legal
 
 - `faq.html`: questions families ask
+- `blog.html` and `blog-<slug>.html`: newsletter articles, built by `tools/build_blog.py`
 - `apply.html`: application checklist and button
 - `404.html`: page not found
 
@@ -42,6 +43,14 @@ Almost everything lives in `assets/site.js`. Each list there mirrors an Airtable
 - `SOCIAL`: paste each social account's full address. Icons show in the footer on every page, and each becomes a link once its address is filled in.
 
 Shared design is in `assets/site.css`. The share image people see when the link is texted or posted is `assets/og-image.png` (1200 × 630). The tab icon is `favicon.svg`, with `favicon.ico` and `apple-touch-icon.png` for older browsers and phones. Opa Homakbi the owl (the name means "Purple Owl"), the menu, the footer, and the animated track lines all come from `assets/site.js`, so every page stays in sync.
+
+## Blog
+Articles come from the newsletter in beehiiv. To add one: save its body HTML as `blog-src/<slug>.html`, add an entry to `POSTS` in `tools/build_blog.py` (newest first), then run `python3 tools/build_blog.py`. The script removes outside links, copies images into `assets/blog/`, and rebuilds `blog.html` and `sitemap.xml`. Each article ends with a note that it first appeared in the newsletter of W.I.S.E.C.E.O., a separate nonprofit.
+
+## Search (SEO)
+- Every page has a title, description, and canonical address. The home page carries structured data describing WISECEO Academy; each article carries Article data.
+- `robots.txt` points search engines to `sitemap.xml`. Rerun `tools/build_blog.py` after adding a page or article so the sitemap stays current (add new pages to `STATIC_PAGES`).
+- Google Search Console: verify `wiseceoacademy.com` as a Domain property (a TXT record in Cloudflare DNS), then submit `https://wiseceoacademy.com/sitemap.xml`.
 
 ## Launch day
 1. In Settings > Pages, confirm `wiseceoacademy.com` is the custom domain, and turn on Enforce HTTPS once it is offered. The `CNAME` file keeps that setting in place.

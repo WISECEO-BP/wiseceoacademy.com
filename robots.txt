@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /blog-src/
+Disallow: /tools/
+Disallow: /airtable/
+
+Sitemap: https://wiseceoacademy.com/sitemap.xml
